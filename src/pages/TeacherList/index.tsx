@@ -58,8 +58,8 @@ function TeacherList() {
                             { value: "Escova", label: "Escova" },
                             { value: "Coloração", label: "Coloração" },
                             {
-                                value: "Sobrnacelhas",
-                                label: "Sobrnacelhas"
+                                value: "Sobrancelhas",
+                                label: "Sobrancelhas"
                             },
                             { value: "Maquiagem", label: "Maquiagem" },
                             { value: "Penteado", label: "Penteado" },

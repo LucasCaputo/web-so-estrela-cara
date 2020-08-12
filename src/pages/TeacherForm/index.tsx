@@ -115,7 +115,7 @@ function TeacherForm() {
                         />
                         <Input
                             name="avatar"
-                            label="Avatar"
+                            label="Avatar URL"
                             value={avatar}
                             onChange={(e) => {
                                 setAvatar(e.target.value);
@@ -153,8 +153,8 @@ function TeacherForm() {
                                 { value: "Escova", label: "Escova" },
                                 { value: "Coloração", label: "Coloração" },
                                 {
-                                    value: "Sobrnacelhas",
-                                    label: "Sobrnacelhas"
+                                    value: "Sobrancelhas",
+                                    label: "Sobrancelhas"
                                 },
                                 { value: "Maquiagem", label: "Maquiagem" },
                                 { value: "Penteado", label: "Penteado" },
@@ -164,7 +164,7 @@ function TeacherForm() {
                         />
                         <Input
                             name="cost"
-                            label="Valor total"
+                            label="Valor total somente números"
                             value={cost}
                             onChange={(e) => {
                                 setCost(e.target.value);
