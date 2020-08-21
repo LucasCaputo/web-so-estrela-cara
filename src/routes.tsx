@@ -4,11 +4,17 @@ import Landing from "./pages/Landing";
 import TeacherList from "./pages/TeacherList";
 import TeacherForm from "./pages/TeacherForm";
 import Success from "./pages/Success";
+import ForgotPassword from "./pages/ForgotPassword";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
 
 function Routes() {
     return (
         <BrowserRouter>
-            <Route path="/" exact component={Landing} />
+            <Route path="/" exact component={Login} />
+            <Route path="/home" component={Landing} />
+            <Route path="/cadastro" component={Register} />
+            <Route path="/recuperar-senha" component={ForgotPassword} />
             <Route path="/pesquisar" exact component={TeacherList} />
             <Route path="/registrar" exact component={TeacherForm} />
             <Route path="/success" component={Success} />

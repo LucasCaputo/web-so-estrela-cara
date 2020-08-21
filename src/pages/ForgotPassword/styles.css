@@ -1,0 +1,127 @@
+#page-forgot {
+    width: 100vw;
+    height: 100vh;
+}
+
+#page-forgot-content {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    width: 100%;
+}
+
+.page-forgot-main {
+    margin-top: -2.4rem;
+}
+
+.page-forgot-main main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+::placeholder {
+    color: var(--color-text-complement);
+    font-size: 2rem;
+}
+
+.page-forgot-main main>div {
+    text-align: left;
+    font: 600 1.25rem Poppins;
+    margin-left: -4rem;
+}
+
+.page-forgot-main main>div h1{
+    color: var(--color-text-title);
+    margin-top: 2rem;
+} 
+
+.page-forgot-main main>div p{
+    color: var(--color-text-base);
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-top: 1.3rem;
+} 
+
+.page-forgot-main main .button-back {
+    width: 50px;
+}
+
+.page-forgot-main main fieldset {
+    border: none;
+    width: 80%;
+    margin: 2rem auto;
+}
+
+.page-forgot-main main button {
+    width: 80%;
+    height: 5.6rem;
+    border-radius: 0.8rem;
+    margin-top: 1.5rem;
+    border: 1px solid var(--color-secondary-dark);
+    background: var(--color-secondary);
+    font: 600 1.8rem Archivo;
+    line-height: 2.8rem;
+    color: var(--color-title-in-primary);
+    text-align: center;
+    cursor: pointer;
+}
+
+.page-forgot-main main button:hover {
+    background: var(--color-secondary-dark);
+}
+
+#show-logo-web {
+    display: none;
+}
+
+@media(min-width: 1100px) {
+    #page-forgot {
+        width: 100%;
+        align-items: center;
+    }
+    #page-forgot-content {
+        display: grid;
+        grid-template-columns: 100% 100%;
+        grid-template-rows: auto;
+    }
+    .button-back{
+        margin-top: -7rem;
+        margin-bottom: 11rem;
+    }
+    .page-forgot-main {
+        margin-top: 3rem;
+    }
+    .page-forgot-main main {
+        margin: 7rem auto;
+        padding-left: 8rem;
+    }
+    .page-forgot-main main>div {
+        text-align: left;
+        margin-left: -32rem;
+    }
+    .page-forgot-main main>div h1{
+        margin-left: 22.5rem;
+        font-size: 3.3rem;
+    } 
+    .page-forgot-main main>div p{
+        margin-left: 22.5rem;
+        font-size: 1.3rem;
+    }   
+    .page-forgot-main main .button-back {
+        margin-left: -30rem;
+    }
+    .page-forgot-main main fieldset {
+        border: none;
+        width: 60%;
+    }
+    .page-forgot-main main button {
+        width: 60%;
+    }
+    #show-logo-web {
+        display: inherit;
+        margin-right: -11.8rem;
+    }
+    #show-logo-mobile {
+        display: none;
+    }
+}

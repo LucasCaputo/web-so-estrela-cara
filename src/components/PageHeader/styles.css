@@ -5,13 +5,12 @@
 }
 
 .page-header .top-bar-container {
-    width: 90%;
-    margin: 0 auto;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     color: var(--color-text-in-primary);
-    padding: 1.6rem 0;
+    padding: 3.2rem;
 }
 
 .page-header .top-bar-container a {
@@ -23,18 +22,17 @@
 }
 
 .page-header .top-bar-container > img {
-    height: 7rem;
+    height: 5rem;
 }
 
 .page-header .top-bar-container img:first-child {
-    height: 5rem;
+    height: 3rem;
 }
 
 .page-header .header-content {
     width: 90%;
-    margin: 0 auto;
     position: relative;
-    margin: 3.2rem auto;
+    margin: 0 auto 3.2rem auto;
 }
 
 .page-header .header-content strong {

@@ -1,0 +1,36 @@
+#logo-component {
+    height: 25rem;
+    width: 100%;
+    background-color: var(--color-primary);
+    padding: 7rem 8.5rem;
+}
+
+#logo-component img {
+    width: 20rem;
+}
+
+#logo-component p {
+    color: var(--color-title-in-primary);
+    opacity: 0.8;
+    font-size: 1.25rem;
+    margin: 0.8rem;
+}
+
+@media(min-width: 1100px){
+    #logo-component {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-left: 1rem;
+    }
+    #logo-component img {
+        width: 50rem;
+    }
+    #logo-component p {
+        align-self: flex-start;
+        margin-left: 10rem;
+        padding-left: 5rem;
+    }
+}
