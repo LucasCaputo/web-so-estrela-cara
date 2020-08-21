@@ -1,10 +1,17 @@
-import React, { useState, FormEvent } from "react";
+import React, {
+    useState,
+    FormEvent,
+    useMemo,
+    useCallback,
+    ChangeEvent
+} from "react";
 import { useHistory } from "react-router-dom";
 
 import PageHeader from "../../components/PageHeader";
 import Input from "../../components/Input";
 
 import warningIcon from "../../assets/images/icons/warning.svg";
+import avatarImage from "../../assets/images/avatar.png";
 
 import "./styles.css";
 import TextArea from "../../components/TextArea";
@@ -15,12 +22,13 @@ function TeacherForm() {
     const history = useHistory();
 
     const [name, setName] = useState("");
-    const [avatar, setAvatar] = useState("");
+    const [avatar, setAvatar] = useState<File>();
     const [whatsapp, setWhatsapp] = useState("");
     const [biography, setBiography] = useState("");
 
     const [subject, setSubject] = useState("");
     const [cost, setCost] = useState("");
+    const [messageBtn, setMessageBtn] = useState("");
 
     const [scheduleItems, setScheduleItems] = useState([
         {
@@ -65,6 +73,8 @@ function TeacherForm() {
     function handleCreateClass(e: FormEvent) {
         e.preventDefault();
 
+        setMessageBtn("Enviando...");
+
         api.post("classes", {
             name,
             avatar,
@@ -75,11 +85,10 @@ function TeacherForm() {
             schedule: scheduleItems
         })
             .then(() => {
-                alert("Cadastro realizado com sucesso!");
-                history.push("/");
+                history.push("/success");
             })
             .catch(() => {
-                alert("Erro no cadastro");
+                setMessageBtn("Verifique seus dados");
             });
 
         console.log({
@@ -93,6 +102,19 @@ function TeacherForm() {
         });
     }
 
+    const handleUploadAvatar = useCallback(
+        (event: ChangeEvent<HTMLInputElement>) => {
+            if (event.target.files) {
+                setAvatar(event.target.files[0]);
+            }
+        },
+        []
+    );
+
+    const preview = useMemo(() => {
+        return avatar ? URL.createObjectURL(avatar) : avatarImage;
+    }, [avatar]);
+
     return (
         <div id="page-teacher-form" className="container">
             <PageHeader
@@ -105,20 +127,30 @@ function TeacherForm() {
                     <fieldset>
                         <legend>Cliente</legend>
 
+                        <div id="input-file">
+                            <span
+                                className="avatar-image"
+                                style={{ backgroundImage: `url(${preview})` }}
+                            />
+                            <input
+                                id="file"
+                                name="avatar"
+                                placeholder="Adicionar avatar"
+                                type="file"
+                                accept=".png, .jpeg, .jpg"
+                                onChange={handleUploadAvatar}
+                            />
+                            <label className="upload-label" htmlFor="file">
+                                Adicionar avatar
+                            </label>
+                        </div>
+
                         <Input
                             name="name"
                             label="Nome completo"
                             value={name}
                             onChange={(e) => {
                                 setName(e.target.value);
-                            }}
-                        />
-                        <Input
-                            name="avatar"
-                            label="Avatar URL"
-                            value={avatar}
-                            onChange={(e) => {
-                                setAvatar(e.target.value);
                             }}
                         />
                         <Input
@@ -259,7 +291,9 @@ function TeacherForm() {
                             Importante! <br />
                             Preencha todos os dados
                         </p>
-                        <button type="submit">Salvar</button>
+                        <button type="submit">
+                            {messageBtn || "Salvar cadastro"}
+                        </button>
                     </footer>
                 </form>
             </main>
