@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 import Input from '../../components/Input';
 import LogoComponent from '../../components/LogoComponent';
-import Register from '../Register';
 
 import heartIcon from '../../assets/images/icons/purple-heart.svg';
 
