@@ -11,6 +11,10 @@
     padding: 0 3.2rem;
 }
 
+#page-register .page-header .top-bar-container {
+    padding-bottom: 1.6rem;
+}
+
 .page-register__content-header-title {
     font: 600 3.2rem Poppins;
     line-height: 4.2rem;
@@ -25,7 +29,7 @@
 }
 
 .page-reister__content-header{
-    padding: 0 3.2rem 3.2rem 3.2rem;
+    padding: 0 3.2rem 8rem 3.2rem ;
 }
 
 .page-register-main main {
