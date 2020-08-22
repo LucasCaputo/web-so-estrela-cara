@@ -15,8 +15,8 @@ function Routes() {
             <Route path="/home" component={Landing} />
             <Route path="/cadastro" component={Register} />
             <Route path="/recuperar-senha" component={ForgotPassword} />
-            <Route path="/pesquisar" exact component={TeacherList} />
-            <Route path="/registrar" exact component={TeacherForm} />
+            <Route path="/pesquisar" component={TeacherList} />
+            <Route path="/registrar" component={TeacherForm} />
             <Route path="/success" component={Success} />
         </BrowserRouter>
     );
