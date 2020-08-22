@@ -28,6 +28,8 @@ function TeacherForm() {
 
     const [subject, setSubject] = useState("");
     const [cost, setCost] = useState("");
+
+
     const [messageBtn, setMessageBtn] = useState("");
 
     const [scheduleItems, setScheduleItems] = useState([
@@ -119,7 +121,7 @@ function TeacherForm() {
         <div id="page-teacher-form" className="container">
             <PageHeader
                 title="Que incrível mais um atendimento"
-                description="Agora você deve preencher o formulário de atendimento"
+                description="Agora você deve preencher o formulário"
                 to="/home"
             />
 
@@ -136,13 +138,12 @@ function TeacherForm() {
                             <input
                                 id="file"
                                 name="avatar"
-                                placeholder="Adicionar avatar"
                                 type="file"
                                 accept=".png, .jpeg, .jpg"
                                 onChange={handleUploadAvatar}
                             />
                             <label className="upload-label" htmlFor="file">
-                                Adicionar avatar
+                                Adicionar foto
                             </label>
                         </div>
 
@@ -156,18 +157,10 @@ function TeacherForm() {
                         />
                         <Input
                             name="whatsapp"
-                            label="Whatsapp"
+                            label="WhatsApp"
                             value={whatsapp}
                             onChange={(e) => {
                                 setWhatsapp(e.target.value);
-                            }}
-                        />
-                        <TextArea
-                            name="bio"
-                            label="Biografia"
-                            value={biography}
-                            onChange={(e) => {
-                                setBiography(e.target.value);
                             }}
                         />
                     </fieldset>
@@ -203,14 +196,22 @@ function TeacherForm() {
                                 setCost(e.target.value);
                             }}
                         />
+                        <TextArea
+                            name="bio"
+                            label="Observações"
+                            value={biography}
+                            onChange={(e) => {
+                                setBiography(e.target.value);
+                            }}
+                        />
                     </fieldset>
 
                     <fieldset>
                         <legend>
                             Horário
-                            <button type="button" onClick={addNewScheduleItem}>
+                            {/* <button type="button" onClick={addNewScheduleItem}>
                                 + Novo horário
-                            </button>
+                            </button> */}
                         </legend>
 
                         {scheduleItems.map((scheduleItem, index) => {
