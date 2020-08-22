@@ -15,21 +15,19 @@
     padding-bottom: 1.6rem;
 }
 
-#page-register .page-header .top-bar-container img {
-    background-color: var(--color-primary);
-}
-
 .page-register__content-header-title {
     font: 600 3.2rem Poppins;
     line-height: 4.2rem;
-    color: var(--color-primary);
+    color: var(--color-title-in-primary);
+    opacity: 0.8;
 }
 
 .page-register__content-header-description{
     font: normal 1.4rem Poppins;
     line-height: 2.4rem;
-    color: var(--color-text-base);
+    color: var(--color-title-in-primary);
     margin-top: 1.6rem;
+    opacity: 0.8;
 }
 
 .page-reister__content-header{
@@ -42,6 +40,7 @@
     align-items: center;
     width: 100%;
     bottom: 6.4rem;
+    margin-top: 3.2rem;
 }
 
 ::placeholder {
