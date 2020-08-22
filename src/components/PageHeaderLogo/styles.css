@@ -1,6 +1,7 @@
 #logo-component {
     height: 25rem;
     width: 100%;
+    background: linear-gradient(180deg, var(--color-background-secondary) 0%, var(--color-primary) 100%);
     background-color: var(--color-primary);
     display: flex;
     flex-direction: column;

@@ -45,7 +45,7 @@ function Register() {
                 name="lastName"
                 label=""
                 type="text"
-                placeholder="Sobrenome"
+                placeholder="Telefone"
                 style={{ marginTop: -16 }}
               />
             </fieldset>
