@@ -120,6 +120,7 @@ function TeacherForm() {
             <PageHeader
                 title="Que incrível mais um atendimento"
                 description="Agora você deve preencher o formulário de atendimento"
+                to="/home"
             />
 
             <main>
