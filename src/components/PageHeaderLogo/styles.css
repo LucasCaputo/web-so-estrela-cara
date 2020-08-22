@@ -28,11 +28,10 @@
         justify-content: center;
     }
     #logo-component img {
-        width: 50rem;
+        width: 40rem;
+        margin-bottom: 1.6rem;
     }
     #logo-component p {
-        align-self: flex-start;
-        margin-left: 10rem;
-        padding-left: 5rem;
+        font-size: 2.4rem;
     }
 }
