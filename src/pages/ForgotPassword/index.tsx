@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import LogoComponent from '../../components/LogoComponent';
+import PageHeaderLogo from '../../components/PageHeaderLogo';
 import Input from '../../components/Input';
 
 import backIcon from '../../assets/images/icons/back.svg';
@@ -11,9 +11,7 @@ function ForgotPassword() {
   return (
     <div id="page-forgot">
       <div id="page-forgot-content">
-        <div id="show-logo-mobile">
-          <LogoComponent />
-        </div>
+          <PageHeaderLogo />
         <div className="page-forgot-main">
           <main>
             <Link to="/" className="button-back">
@@ -34,9 +32,6 @@ function ForgotPassword() {
             </fieldset>
             <button type="button">Enviar</button>
           </main>
-        </div>
-        <div id="show-logo-web">
-          <LogoComponent />
         </div>
       </div>
     </div>

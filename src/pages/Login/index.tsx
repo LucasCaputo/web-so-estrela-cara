@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Input from '../../components/Input';
-import LogoComponent from '../../components/LogoComponent';
+import PageHeaderLogo from '../../components/PageHeaderLogo';
 
 import heartIcon from '../../assets/images/icons/purple-heart.svg';
 
@@ -11,7 +11,7 @@ import './styles.css';
 function Login() {
   return (
     <div id="page-login">
-        <LogoComponent />
+        <PageHeaderLogo />
         <div className="page-login-main">
           <main>
             <div className="title">
@@ -40,10 +40,10 @@ function Login() {
             <Link to="/home" id="buttonSignin">
               Entrar
             </Link>
+            <footer>          
+              <span>Feito com<img src={heartIcon} alt="heart icon" /></span>
+            </footer>
           </main>
-          <footer>          
-            <span>Feito com<img src={heartIcon} alt="heart icon" /></span>
-          </footer>
         </div>
     </div>
   )

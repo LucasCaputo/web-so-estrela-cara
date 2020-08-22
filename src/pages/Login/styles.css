@@ -110,17 +110,17 @@
     #page-login {
         width: 100%;
         align-items: center;
+        display: grid;
+        grid-template-columns: 1fr 1fr ;
+        overflow: hidden;
     }
     #page-login-content {
         display: grid;
         grid-template-columns: 50% 50%;
     }
     .page-login-main main {
-        margin: 16rem auto;
-        padding-left: 12rem;
-    }
-    .page-login-main main .title {
-        margin-left: 1.4rem;
+        margin: 0 auto;
+        max-width: 50rem;
     }
     .page-login-main main .title h1{
         font-size: 3.3rem;
@@ -137,8 +137,8 @@
     }
     .page-login-main footer {
         justify-content: space-evenly;
-        margin-top: -6rem;
-        padding-left: 10rem;
+        position: absolute;
+        bottom: 3.2rem;
     }
     .page-login-main footer div p {
         margin-right: 14rem;

@@ -3,20 +3,39 @@
     height: 100vh;
 }
 
-#page-register-content {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    width: 100%;
+#page-register .page-header {
+    background-color: transparent;
 }
 
-.page-register-main {
-    margin-top: -10rem;
+#page-register .page-header header-content {
+    padding: 3.2rem;
+}
+
+.page-register__content-header-title {
+    font: 600 3.2rem Poppins;
+    line-height: 4.2rem;
+    color: var(--color-primary);
+}
+
+.page-register__content-header-description{
+    font: normal 1.4rem Poppins;
+    line-height: 2.4rem;
+    color: var(--color-text-base);
+    margin-top: 1.6rem;
+}
+
+.page-reister__content-header{
+    padding: 3.2rem;
 }
 
 .page-register-main main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: absolute;
+    margin: 0 auto;
+    width: 100%;
+    bottom: 6.4rem;
 }
 
 ::placeholder {
@@ -30,19 +49,18 @@
     margin-left: -14rem;
 }
 
-.page-register-main main>div p {
-    color: var(--color-text-base);
-    font-size: 1.2rem;
-    font-weight: 400;
-}
-
 .page-register-main main>div h1 {
     color: var(--color-text-title);
 }
 
-.page-register-main main .button-back {
-    padding-top: 1.0rem;
-    margin-left: -24rem;
+.page-register-main__form-title {
+    color: var(--color-primary);
+    font: 600 2.4rem Poppins;
+    justify-content: start;
+    line-height: 2.6rem;
+    margin-bottom: 1.6rem;
+    padding-left: 3.2rem;
+    width: 100%;
 }
 
 .page-register-main main fieldset {
@@ -51,21 +69,25 @@
 }
 
 .page-register-main main button {
+    border:none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 80%;
     height: 5.6rem;
     border-radius: 0.8rem;
-    border: 1px solid var(--color-secundary-dark);
-    background: var(--color-secundary);
+    background: var(--color-primary);
+    margin-top: 3.6rem;
     font: 600 1.8rem Archivo;
     line-height: 2.8rem;
     color: var(--color-title-in-primary);
-    text-align: center;
     cursor: pointer;
-    margin-top: -0.6rem;
+    transition: background-color 0.2s;
+    text-decoration: none;
 }
 
 .page-register-main main button:hover {
-    background: var(--color-secundary-dark);
+    background: var(--color-primary-light);
 }
 
 #show-logo-web {
@@ -98,9 +120,6 @@
         text-align: left;
         margin-left: -32rem;
     }
-    .page-register-main main>div p {
-        font-size: 1.3rem;
-    }
     .page-register-main main>div h1 {
         font-size: 3.3rem;
     }
@@ -114,8 +133,5 @@
     #show-logo-web {
         display: inherit;
         margin-right: -11.8rem;
-    }
-    #show-logo-mobile {
-        display: none;
     }
 }

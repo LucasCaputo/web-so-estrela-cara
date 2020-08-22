@@ -3,7 +3,7 @@ import React from 'react';
 import logoImg from '../../assets/images/logo.svg';
 import './styles.css';
 
-function LogoComponent() {
+function PageHeaderLogo() {
   return (
     <div id="logo-component">
       <img src={logoImg} alt="Logo" />
@@ -12,4 +12,4 @@ function LogoComponent() {
   )
 }
 
-export default LogoComponent;
+export default PageHeaderLogo;
