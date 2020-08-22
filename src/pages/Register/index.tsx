@@ -13,7 +13,6 @@ function Register() {
               <div className="top-bar-container">
                   <Link to="/">
                       <img
-                          className="top-bar-icon-back"
                           src={backIcon}
                           alt="Voltar"
                       />

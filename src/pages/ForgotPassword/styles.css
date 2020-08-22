@@ -3,14 +3,15 @@
     height: 100vh;
 }
 
-#page-forgot-content {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
+.page-forgot-main h1{
     width: 100%;
+    font-size: 2.4rem;
+    padding: 0 3.2rem 1.6rem 3.2rem;
 }
-
-.page-forgot-main {
-    margin-top: -2.4rem;
+.page-forgot-main p{
+    width: 100%;
+    font-size: 1.6rem;
+    padding: 0 3.2rem;
 }
 
 .page-forgot-main main {
@@ -42,8 +43,13 @@
     margin-top: 1.3rem;
 } 
 
-.page-forgot-main main .button-back {
-    width: 50px;
+#page-forgot-content .top-bar-container {
+    padding: 3.2rem;
+}
+
+#page-forgot-content img.top-bar-icon-back {
+    height: 2rem;
+    background-color: var(--color-secondary);
 }
 
 .page-forgot-main main fieldset {
@@ -72,24 +78,46 @@
 
 @media(min-width: 1100px) {
     #page-forgot {
+        display: flex;
+    }
+
+    #page-forgot-content {
+        display: flex;
         width: 100%;
         align-items: center;
+        overflow-x: hidden;
+        display: flex;
+        flex-direction: row-reverse;
     }
-    #page-forgot-content {
-        display: grid;
-        grid-template-columns: 100% 100%;
-        grid-template-rows: auto;
+
+    #page-forgot-content .top-bar-container {
+        position: absolute;
+        top: 0;
+        left: 9.25rem;
     }
-    .button-back{
-        margin-top: -7rem;
-        margin-bottom: 11rem;
+    
+    #page-forgot-content img.top-bar-icon-back {
+        height: 2rem;
+        background-color: var(--color-secondary);
     }
+
+    .page-forgot-main h1{
+        font-size: 3.2rem;
+        padding: 0;
+        padding-bottom: 0.8rem;
+        width: 59%;
+    }
+
+    .page-forgot-main p{
+        text-align: center;
+        margin-bottom: 2.4rem;
+    }
+
     .page-forgot-main {
-        margin-top: 3rem;
+        justify-content: center;
     }
     .page-forgot-main main {
-        margin: 7rem auto;
-        padding-left: 8rem;
+        width: 600px;
     }
     .page-forgot-main main>div {
         text-align: left;
@@ -102,10 +130,7 @@
     .page-forgot-main main>div p{
         margin-left: 22.5rem;
         font-size: 1.3rem;
-    }   
-    .page-forgot-main main .button-back {
-        margin-left: -30rem;
-    }
+    } 
     .page-forgot-main main fieldset {
         border: none;
         width: 60%;

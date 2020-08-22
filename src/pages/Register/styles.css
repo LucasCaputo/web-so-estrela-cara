@@ -15,6 +15,10 @@
     padding-bottom: 1.6rem;
 }
 
+#page-register .page-header .top-bar-container img {
+    background-color: var(--color-primary);
+}
+
 .page-register__content-header-title {
     font: 600 3.2rem Poppins;
     line-height: 4.2rem;

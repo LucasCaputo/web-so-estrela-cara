@@ -11,16 +11,24 @@ function ForgotPassword() {
   return (
     <div id="page-forgot">
       <div id="page-forgot-content">
-          <PageHeaderLogo />
+       
+        <PageHeaderLogo />
+
+        <div className="top-bar-container">
+          <Link to="/">
+              <img
+                className="top-bar-icon-back"
+                src={backIcon}
+                alt="Voltar"
+              />
+          </Link>
+        </div>
+        
         <div className="page-forgot-main">
           <main>
-            <Link to="/" className="button-back">
-              <img src={backIcon} alt="button back" />
-            </Link>
-            <div>
-              <h1>Eita, esqueceu <br /> sua senha?</h1>
-              <p>Não se preocupe, daremos um jeito nisso.</p>
-            </div>
+            <h1>Eita, esqueceu <br />  sua senha?</h1>
+            <p>Não se esquenda, vamos dar um jeito nisso.</p>
+            
             <fieldset>
               <Input
                 name="email"
@@ -34,6 +42,7 @@ function ForgotPassword() {
           </main>
         </div>
       </div>
+
     </div>
   );
 }
