@@ -40,16 +40,16 @@ function TeacherForm() {
         }
     ]);
 
-    function addNewScheduleItem() {
-        setScheduleItems([
-            ...scheduleItems,
-            {
-                week_day: 0,
-                from: "",
-                to: ""
-            }
-        ]);
-    }
+    // function addNewScheduleItem() {
+    //     setScheduleItems([
+    //         ...scheduleItems,
+    //         {
+    //             week_day: 0,
+    //             from: "",
+    //             to: ""
+    //         }
+    //     ]);
+    // }
 
     function setScheduleItemValue(
         position: number,
