@@ -75,6 +75,18 @@
     background: var(--color-secondary);
 }
 
+.makeStyles-expand-2 {
+    margin-left: 0 !important;
+}
+
+.MuiTypography-colorTextSecondary {
+    margin-left: auto !important;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
 @media (min-width: 700px) {
     .teacher-item header,
     .teacher-item footer {
