@@ -74,17 +74,18 @@ body {
 }
 
 #root {
-  /* display: flex;
+  display: flex;
   align-items: center;
-  justify-content: center; */
+  justify-content: center;
 }
 
 body,
 input,
 button,
-textarea {
+textarea,
+.MuiPaper-root {
   font: 500 1.6rem Poppins;
-  color: var(--color-text-base);
+  color: var(--dark) !important;
 }
 
 .container {

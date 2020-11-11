@@ -7,6 +7,7 @@ import Success from "./pages/Success";
 import ForgotPassword from "./pages/ForgotPassword";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import HomeLinker from "./pages/HomeLinker";
 import Dashboards from "./pages/Dashboards";
 
 function Routes() {
@@ -14,6 +15,7 @@ function Routes() {
     <BrowserRouter>
       <Route path="/" exact component={Login} />
       <Route path="/home" component={Landing} />
+      <Route path="/home-linker" component={HomeLinker} />
       <Route path="/dashboards" component={Dashboards} />
       <Route path="/cadastro" component={Register} />
       <Route path="/recuperar-senha" component={ForgotPassword} />

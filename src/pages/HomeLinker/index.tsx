@@ -4,66 +4,15 @@ import LinkerPageHeader from "../../components/LinkerPageHeader";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import Chart from "chart.js";
 
 import "./styles.css";
 
-const afterinit = () => {
-  let ctx = document.getElementsByClassName("mychart").getContext("2d");
-
-  console.log(ctx);
-
-  let myChart = new Chart(ctx, {
-    type: "bar",
-    data: {
-      labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-      datasets: [
-        {
-          label: "# of Votes",
-          data: [12, 19, 3, 5, 2, 3],
-          backgroundColor: [
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(54, 162, 235, 0.2)",
-            "rgba(255, 206, 86, 0.2)",
-            "rgba(75, 192, 192, 0.2)",
-            "rgba(153, 102, 255, 0.2)",
-            "rgba(255, 159, 64, 0.2)",
-          ],
-          borderColor: [
-            "rgba(255, 99, 132, 1)",
-            "rgba(54, 162, 235, 1)",
-            "rgba(255, 206, 86, 1)",
-            "rgba(75, 192, 192, 1)",
-            "rgba(153, 102, 255, 1)",
-            "rgba(255, 159, 64, 1)",
-          ],
-          borderWidth: 1,
-        },
-      ],
-    },
-    options: {
-      scales: {
-        yAxes: [
-          {
-            ticks: {
-              beginAtZero: true,
-            },
-          },
-        ],
-      },
-    },
-  });
-};
-
 function Dashboards() {
-  afterinit();
   return (
     <div id="Dashboards">
       <LinkerPageHeader name="Senhor Barriga" to="/home"></LinkerPageHeader>
 
-      <canvas className="myChart" width="400" height="400"></canvas>
-
-      {/* <div className="dashboards-container">
+      <div className="dashboards-container">
         <Grid container spacing={3}>
           <Grid item xs={6}>
             <Paper className="primary-cards">
@@ -132,7 +81,6 @@ function Dashboards() {
           </Grid>
         </Grid>
       </div>
-     */}
     </div>
   );
 }
