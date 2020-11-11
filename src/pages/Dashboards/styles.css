@@ -1,0 +1,16 @@
+#Dashboards {
+  width: 100vw;
+  height: 100vh;
+}
+
+#Dashboards .dashboards-container {
+  margin: 2.4rem 1.6rem;
+}
+
+#Dashboards .primary-cards {
+  height: 16rem;
+}
+
+#Dashboards .secondary-cards {
+  height: 8rem;
+}
