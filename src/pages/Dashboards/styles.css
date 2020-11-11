@@ -3,5 +3,14 @@
   height: 100vh;
 }
 
-@media (min-width: 1100px) {
+#Dashboards .dashboards-container {
+  margin: 2.4rem 1.6rem;
+}
+
+#Dashboards .primary-cards {
+  height: 16rem;
+}
+
+#Dashboards .secondary-cards {
+  height: 8rem;
 }
