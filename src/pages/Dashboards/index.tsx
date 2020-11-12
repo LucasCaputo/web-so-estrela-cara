@@ -104,7 +104,6 @@ function Dashboards() {
 
           <section className="dashboards-recommendation">
             <h2 className="dashboards-title">Recomendações</h2>
-            <h2></h2>
 
             <Grid container spacing={3}>
               <Grid item xs={6}>
