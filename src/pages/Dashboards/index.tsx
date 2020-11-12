@@ -1,10 +1,10 @@
 import React from "react";
 
 import LinkerPageHeader from "../../components/LinkerPageHeader";
-import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
-import Chart from "chart.js";
+// import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
+// import Paper from "@material-ui/core/Paper";
+// import Grid from "@material-ui/core/Grid";
+// import Chart from "chart.js";
 
 import "./styles.css";
 

@@ -32,7 +32,7 @@ const PageHeader: React.FC<PageHeaderProps> = (props) => {
   const classes = useStyles();
   return (
     <header id="LinkerPageHeader">
-      {props.type == "topbar" && (
+      {props.type === "topbar" && (
         <AppBar position="static">
           <Toolbar>
             <IconButton
@@ -53,7 +53,7 @@ const PageHeader: React.FC<PageHeaderProps> = (props) => {
         </AppBar>
       )}
 
-      {props.type == "return" && (
+      {props.type === "return" && (
         <AppBar position="static">
           <Toolbar>
             <Link to={props.to}>

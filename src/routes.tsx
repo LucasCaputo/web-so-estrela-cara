@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import Landing from "./pages/Landing";
-import TeacherList from "./pages/TeacherList";
 import TeacherForm from "./pages/TeacherForm";
 import Success from "./pages/Success";
 import ForgotPassword from "./pages/ForgotPassword";
@@ -19,7 +18,6 @@ function Routes() {
       <Route path="/dashboards" component={Dashboards} />
       <Route path="/cadastro" component={Register} />
       <Route path="/recuperar-senha" component={ForgotPassword} />
-      <Route path="/pesquisar" component={TeacherList} />
       <Route path="/registrar" component={TeacherForm} />
       <Route path="/success" component={Success} />
     </BrowserRouter>
