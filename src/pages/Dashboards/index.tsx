@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import Card from "../../components/Card";
+
 import LinkerPageHeader from "../../components/LinkerPageHeader";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import Paper from "@material-ui/core/Paper";
@@ -27,7 +29,7 @@ function Dashboards() {
       >
         <Box width="90%">
           <section className="basic-chart">
-            <h2 className="dashboards-title">Geral</h2>
+            <h2 className="dashboards-title">Visão Geral</h2>
             <div className="dashboards-chart-container">
               <span className="dashboards-chart-revenue"></span>
               <span className="dashboards-chart-cost"></span>
@@ -40,29 +42,21 @@ function Dashboards() {
               width="100%"
               gridGap="16px"
             >
-              <Paper className="secondary-cards revenue">
-                <Box display="flex" flexDirection="row">
-                  <span className="card-mark"></span>
-                  <h4>Receitas</h4>
-                </Box>
-              </Paper>
-              <Paper className="secondary-cards cost">
-                <Box display="flex" flexDirection="row">
-                  <span className="card-mark"></span>
-                  <h4>Gastos</h4>
-                </Box>
-              </Paper>
-              <Paper className="secondary-cards future">
-                <Box display="flex" flexDirection="row">
-                  <span className="card-mark"></span>
-                  <h4>Receitas Futuras</h4>
-                </Box>
-              </Paper>
+              <p className="dashboards-title">O gráfico acima representa:</p>
+              <Card title="Entradas" color="green" value="2.000,00"></Card>
+              <Card title="Saídas" color="red" value="1.000,00"></Card>
+              <Card
+                title="Gastos Futuros"
+                color="orange"
+                value="1.250,00"
+              ></Card>
             </Box>
           </section>
 
           <section className="dashboards-container">
-            <h2>Fazer Lançamento</h2>
+            <Link to="/home" className="button">
+              Gerenciar Lançamentos
+            </Link>
 
             <Grid container spacing={3}>
               <Grid item xs={6}>

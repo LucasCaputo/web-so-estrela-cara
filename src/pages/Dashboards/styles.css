@@ -3,13 +3,18 @@
   height: 100vh;
 }
 
-#Dashboards .dashboards-container {
+#Dashboards .basic-chart .dashboards-chart-container {
+  height: 40vh;
+}
+
+#Dashboards .basic-chart .dashboards-title {
+  color: var(--color-text-base);
+  padding: 1.6rem;
+  font-size: 1.6rem;
 }
 
 #Dashboards .primary-cards {
   height: 16rem;
-}
-
-#Dashboards .secondary-cards {
-  height: 8rem;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 1.6rem;
 }

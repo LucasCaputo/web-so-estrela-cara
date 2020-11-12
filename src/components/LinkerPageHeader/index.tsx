@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import SimpleMenu from "../../components/SimpleMenu";
 
-import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -63,13 +63,13 @@ const PageHeader: React.FC<PageHeaderProps> = (props) => {
                 color="inherit"
                 aria-label="menu"
               >
-                <ArrowBackIcon />
+                <ArrowBackIosIcon />
               </IconButton>
             </Link>
-
-            <Typography variant="h6" className={classes.title}>
+            <Link to={props.to} className={classes.title}>
               <span className="liker-page-header__company-name">Voltar</span>
-            </Typography>
+            </Link>
+
             <Button className="liker-page-header__logo">Constelação ⛑</Button>
           </Toolbar>
         </AppBar>
