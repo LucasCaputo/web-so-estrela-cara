@@ -54,7 +54,7 @@ function Home() {
 
         <Grid container spacing={3}>
           <Grid item xs={6}>
-            <Link to={"/home"}>
+            <Link to={"/dashboards"}>
               <Paper className="secondary-cards health">
                 <Box display="flex" justifyContent="flex-end" className="icon">
                   <LocalHospitalTwoToneIcon></LocalHospitalTwoToneIcon>
