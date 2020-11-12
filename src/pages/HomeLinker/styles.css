@@ -1,63 +1,63 @@
-#Dashboards {
+#Home {
   width: 100vw;
   height: 100vh;
 }
 
-#Dashboards .dashboards-container {
+#Home .home-container {
   margin: 2.4rem 1.6rem;
 }
 
-#Dashboards .dashboards-container .primary-cards {
+#Home .home-container .primary-cards {
   height: 16rem;
   border-radius: 1.6rem;
 }
 
-#Dashboards .dashboards-container .primary-cards.revenue {
+#Home .home-container .primary-cards.revenue {
   background: var(--color-secondary);
 }
 
-#Dashboards .dashboards-container .primary-cards .icon,
-#Dashboards .dashboards-container .secondary-cards .icon {
+#Home .home-container .primary-cards .icon,
+#Home .home-container .secondary-cards .icon {
   padding: 1.6rem;
   padding-bottom: 0;
   color: var(--light);
 }
 
-#Dashboards .dashboards-container .primary-cards .label {
+#Home .home-container .primary-cards .label {
   color: var(--light);
   padding: 1.6rem;
 }
 
-#Dashboards .dashboards-container .primary-cards.revenue .value {
+#Home .home-container .primary-cards.revenue .value {
   color: var(--teal);
   padding-left: 1.6rem;
   font-size: 1.6rem;
 }
 
-#Dashboards .dashboards-container .primary-cards.extract {
+#Home .home-container .primary-cards.extract {
   background: var(--color-primary);
 }
 
-#Dashboards .dashboards-container .secondary-cards {
+#Home .home-container .secondary-cards {
   height: 10rem;
   border-radius: 1.6rem;
 }
 
-#Dashboards .dashboards-container .secondary-cards.health {
+#Home .home-container .secondary-cards.health {
   background: var(--green);
 }
 
-#Dashboards .dashboards-container .secondary-cards .icon {
+#Home .home-container .secondary-cards .icon {
   padding: 0.8rem;
 }
 
-#Dashboards .dashboards-container .secondary-cards .hint {
+#Home .home-container .secondary-cards .hint {
   color: var(--color-secondary);
   font-size: 1.25rem;
   padding-left: 0.8rem;
 }
 
-#Dashboards .dashboards-container .secondary-cards .description {
+#Home .home-container .secondary-cards .description {
   color: var(--color-secondary);
   font-size: 1rem;
   padding: 0.8rem;

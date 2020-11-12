@@ -12,16 +12,16 @@ import LocalHospitalTwoToneIcon from "@material-ui/icons/LocalHospitalTwoTone";
 
 import "./styles.css";
 
-function Dashboards() {
+function Home() {
   return (
-    <div id="Dashboards">
+    <div id="Home">
       <LinkerPageHeader
         name="Senhor Barriga"
         to="/home"
         type="topbar"
       ></LinkerPageHeader>
 
-      <div className="dashboards-container">
+      <div className="home-container">
         <Grid container spacing={3}>
           <Grid item xs={6}>
             <Paper className="primary-cards revenue">
@@ -54,7 +54,7 @@ function Dashboards() {
 
         <Grid container spacing={3}>
           <Grid item xs={6}>
-            <Link to={"/dashboards"}>
+            <Link to={"/home"}>
               <Paper className="secondary-cards health">
                 <Box display="flex" justifyContent="flex-end" className="icon">
                   <LocalHospitalTwoToneIcon></LocalHospitalTwoToneIcon>
@@ -101,4 +101,4 @@ function Dashboards() {
   );
 }
 
-export default Dashboards;
+export default Home;
