@@ -14,8 +14,8 @@ function Routes() {
   return (
     <BrowserRouter>
       <Route path="/" exact component={Login} />
-      <Route path="/home" component={Landing} />
-      <Route path="/home-linker" component={HomeLinker} />
+      <Route path="/home-old" component={Landing} />
+      <Route path="/home" component={HomeLinker} />
       <Route path="/dashboards" component={Dashboards} />
       <Route path="/cadastro" component={Register} />
       <Route path="/recuperar-senha" component={ForgotPassword} />

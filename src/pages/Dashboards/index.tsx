@@ -59,9 +59,18 @@ function Dashboards() {
   afterinit();
   return (
     <div id="Dashboards">
-      <LinkerPageHeader name="Senhor Barriga" to="/home"></LinkerPageHeader>
+      <LinkerPageHeader
+        name="Senhor Barriga"
+        to="/home"
+        type="return"
+      ></LinkerPageHeader>
 
-      <canvas className="myChart" width="400" height="400"></canvas>
+      <div>
+        <span className="1"></span>
+        <span className="2"></span>
+
+        <span className="3"></span>
+      </div>
 
       {/* <div className="dashboards-container">
         <Grid container spacing={3}>
