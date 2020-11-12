@@ -7,13 +7,18 @@ interface CardProps {
   title: string;
   value: string;
   color: string;
+  size: string;
 }
 
 const Card: React.FC<CardProps> = (props) => {
   return (
-    <Paper id="Card">
+    <Paper id="Card" className={props.size}>
       <Box display="flex" flexDirection="row" alignItems="center" height="100%">
-        <Box className={props.color} width="8%" height="100%"></Box>
+        <Box
+          className={props.color}
+          width={props.size === "medium" ? "8%" : "4%"}
+          height="100%"
+        ></Box>
 
         <Box width="64%">
           <strong
@@ -23,7 +28,7 @@ const Card: React.FC<CardProps> = (props) => {
         </Box>
 
         <Box width="28%" className="card-value">
-          {props.value} <span> R$</span>
+          {props.value} <span> {props.size === "medium" ? "R$" : ""}</span>
         </Box>
       </Box>
     </Paper>

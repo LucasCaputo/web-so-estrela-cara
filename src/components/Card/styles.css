@@ -1,6 +1,13 @@
 #Card {
-  height: 8rem;
   box-shadow: 0px 4px 5px 2px rgba(0, 0, 0, 0.2);
+}
+
+#Card.small {
+  height: 6rem;
+}
+
+#Card.medium {
+  height: 8rem;
 }
 #Card .green {
   background: var(--green-dark);
