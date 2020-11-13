@@ -19,6 +19,7 @@
   --color-box-base: #ffffff;
   --color-box-footer: #fafafc;
 
+  --bg: #f9f9f9;
   --blue: #007bff;
   --indigo: #6610f2;
   --purple: #6f42c1;
@@ -72,7 +73,7 @@ body,
 }
 
 body {
-  background: var(--color-background);
+  background: var(--bg);
 }
 
 #root {

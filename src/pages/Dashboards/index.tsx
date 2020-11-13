@@ -7,7 +7,7 @@ import BubbleChart from "../../components/BubbleChart";
 import LinkerPageHeader from "../../components/LinkerPageHeader";
 import { Paper, Grid, Box } from "@material-ui/core";
 
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 // import Chart from "chart.js";
 
 import "./styles.css";
@@ -73,16 +73,16 @@ function Dashboards() {
             <Grid container spacing={3}>
               <Grid item xs={6}>
                 <Paper className="primary-cards">
-                  <p>Tempo de Vida</p>
+                  <p className="title-cards">Tempo de Vida</p>
 
-                  <p>
-                    1 mês <br />e meio
+                  <p className="life-time">
+                    1 mês e <br /> meio
                   </p>
                 </Paper>
               </Grid>
               <Grid item xs={6}>
                 <Paper className="primary-cards">
-                  <p>Gestão de Caixa</p>
+                  <p className="title-cards">Gestão de Caixa</p>
                   <p>Mar</p>
                   <p>Caixa</p>
                   <p>Necessidade de Caixa</p>
@@ -93,7 +93,7 @@ function Dashboards() {
             <Grid container spacing={3}>
               <Grid item xs={6}>
                 <Paper className="primary-cards">
-                  <p>Fluxo Resultado</p>
+                  <p className="title-cards">Fluxo Resultado</p>
                   <p>Ver detalhes</p>
                 </Paper>
               </Grid>
@@ -108,23 +108,35 @@ function Dashboards() {
 
             <Grid container spacing={3}>
               <Grid item xs={6}>
-                <Paper className="secondary-cards health">
-                  <p>Cursos de gestão gratuitos disponibilizados pela Sebrae</p>
+                <Paper className="primary-cards health">
+                  <p className="description">
+                    Cursos de gestão gratuitos disponibilizados pela Sebrae
+                  </p>
 
-                  <Link to="/">
-                    <ArrowBackIosIcon></ArrowBackIosIcon>
-                    <span>Saiba mais</span>
-                  </Link>
+                  <Box justifyContent="flex-end" display="flex">
+                    <Link to="/">
+                      <span>Saiba mais</span>
+                    </Link>
+                    <Link to="/">
+                      <ArrowForwardIosIcon></ArrowForwardIosIcon>
+                    </Link>
+                  </Box>
                 </Paper>
               </Grid>
 
               <Grid item xs={6}>
-                <Paper className="secondary-cards">
-                  <p>Programa de aceleração abre vagas neste mês</p>
-                  <Link to="/">
-                    <ArrowBackIosIcon></ArrowBackIosIcon>
-                    <span>Saiba mais</span>
-                  </Link>
+                <Paper className="primary-cards">
+                  <p className="description">
+                    Programa de aceleração abre vagas neste mês
+                  </p>
+                  <Box justifyContent="flex-end" display="flex">
+                    <Link to="/">
+                      <span>Saiba mais</span>
+                    </Link>
+                    <Link to="/">
+                      <ArrowForwardIosIcon></ArrowForwardIosIcon>
+                    </Link>
+                  </Box>
                 </Paper>
               </Grid>
             </Grid>
