@@ -8,6 +8,12 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import HomeLinker from "./pages/HomeLinker";
 import Dashboards from "./pages/Dashboards";
+import LifeTime from "./pages/LifeTime";
+import Extract from "./pages/Extract";
+import FlowResults from "./pages/FlowResults";
+import CashManagement from "./pages/CashManagement";
+import Integration from "./pages/Integration";
+import Classes from "./pages/Classes";
 
 function Routes() {
   return (
@@ -19,6 +25,13 @@ function Routes() {
       <Route path="/cadastro" component={Register} />
       <Route path="/recuperar-senha" component={ForgotPassword} />
       <Route path="/registrar" component={TeacherForm} />
+      <Route path="/tempo-vida" component={LifeTime} />
+      <Route path="/extrato" component={Extract} />
+      <Route path="/resultados" component={FlowResults} />
+      <Route path="/integracao" component={Integration} />
+      <Route path="/cursos" component={Classes} />
+      <Route path="/caixa" component={CashManagement} />
+
       <Route path="/success" component={Success} />
     </BrowserRouter>
   );

@@ -44,16 +44,18 @@ function Home() {
             </Paper>
           </Grid>
           <Grid item xs={6}>
-            <Paper className="primary-cards extract">
-              <Box display="flex" justifyContent="flex-end" className="icon">
-                <ReceiptTwoToneIcon></ReceiptTwoToneIcon>
-              </Box>
+            <Link to={"/extrato"}>
+              <Paper className="primary-cards extract">
+                <Box display="flex" justifyContent="flex-end" className="icon">
+                  <ReceiptTwoToneIcon></ReceiptTwoToneIcon>
+                </Box>
 
-              <h4 className="label">
-                Ver <br />
-                Extrato
-              </h4>
-            </Paper>
+                <h4 className="label">
+                  Ver <br />
+                  Extrato
+                </h4>
+              </Paper>
+            </Link>
           </Grid>
         </Grid>
 
@@ -96,7 +98,7 @@ function Home() {
 
         <Grid container spacing={3}>
           <Grid item xs={6}>
-            <Link to={"/dashboards"}>
+            <Link to={"/cursos"}>
               <Paper className="secondary-cards classes">
                 <Box display="flex" justifyContent="flex-end" className="icon">
                   <LiveTvIcon></LiveTvIcon>
@@ -116,7 +118,7 @@ function Home() {
             </Link>
           </Grid>
           <Grid item xs={6}>
-            <Link to={"/dashboards"}>
+            <Link to={"/tempo-vida"}>
               <Paper className="secondary-cards lifetime">
                 <Box display="flex" justifyContent="flex-end" className="icon">
                   <TimelineIcon></TimelineIcon>
@@ -139,7 +141,7 @@ function Home() {
 
         <Grid container spacing={3}>
           <Grid item xs={6}>
-            <Link to={"/dashboards"}>
+            <Link to={"/extrato"}>
               <Paper className="secondary-cards pay">
                 <Box display="flex" justifyContent="flex-end" className="icon">
                   <AddShoppingCartIcon></AddShoppingCartIcon>
@@ -159,7 +161,7 @@ function Home() {
             </Link>
           </Grid>
           <Grid item xs={6}>
-            <Link to={"/dashboards"}>
+            <Link to={"/extrato"}>
               <Paper className="secondary-cards health">
                 <Box display="flex" justifyContent="flex-end" className="icon">
                   <AttachMoneyIcon></AttachMoneyIcon>

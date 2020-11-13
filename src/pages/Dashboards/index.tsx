@@ -26,7 +26,7 @@ function Dashboards() {
         width="100%"
         flexDirection="column"
       >
-        <Box width="90%">
+        <Box width="90%" paddingBottom="3.2rem">
           <section className="basic-chart">
             <h2 className="dashboards-title">Visão Geral</h2>
             <div className="dashboards-chart-container">
@@ -66,36 +66,42 @@ function Dashboards() {
           </section>
 
           <section className="dashboards-container">
-            <Link to="/home" className="button">
+            <Link to="/extrato" className="button">
               Gerenciar Lançamentos
             </Link>
 
             <Grid container spacing={3}>
               <Grid item xs={6}>
-                <Paper className="primary-cards">
-                  <p className="title-cards">Tempo de Vida</p>
+                <Link to="/tempo-vida">
+                  <Paper className="primary-cards">
+                    <p className="title-cards">Tempo de Vida</p>
 
-                  <p className="life-time">
-                    1 mês e <br /> meio
-                  </p>
-                </Paper>
+                    <p className="life-time">
+                      1 mês e <br /> meio
+                    </p>
+                  </Paper>
+                </Link>
               </Grid>
               <Grid item xs={6}>
-                <Paper className="primary-cards">
-                  <p className="title-cards">Gestão de Caixa</p>
-                  <p>Mar</p>
-                  <p>Caixa</p>
-                  <p>Necessidade de Caixa</p>
-                </Paper>
+                <Link to="/caixa">
+                  <Paper className="primary-cards">
+                    <p className="title-cards">Gestão de Caixa</p>
+                    <p>Mar</p>
+                    <p>Caixa</p>
+                    <p>Necessidade de Caixa</p>
+                  </Paper>
+                </Link>
               </Grid>
             </Grid>
 
             <Grid container spacing={3}>
               <Grid item xs={6}>
-                <Paper className="primary-cards">
-                  <p className="title-cards">Fluxo Resultado</p>
-                  <p>Ver detalhes</p>
-                </Paper>
+                <Link to="/resultados">
+                  <Paper className="primary-cards">
+                    <p className="title-cards">Fluxo Resultado</p>
+                    <p>Ver detalhes</p>
+                  </Paper>
+                </Link>
               </Grid>
               <Grid item xs={6}>
                 <Paper className="primary-cards"></Paper>
@@ -114,10 +120,10 @@ function Dashboards() {
                   </p>
 
                   <Box justifyContent="flex-end" display="flex">
-                    <Link to="/">
+                    <Link to="/cursos">
                       <span>Saiba mais</span>
                     </Link>
-                    <Link to="/">
+                    <Link to="/cursos">
                       <ArrowForwardIosIcon></ArrowForwardIosIcon>
                     </Link>
                   </Box>
@@ -130,10 +136,10 @@ function Dashboards() {
                     Programa de aceleração abre vagas neste mês
                   </p>
                   <Box justifyContent="flex-end" display="flex">
-                    <Link to="/">
+                    <Link to="/cursos">
                       <span>Saiba mais</span>
                     </Link>
-                    <Link to="/">
+                    <Link to="/cursos">
                       <ArrowForwardIosIcon></ArrowForwardIosIcon>
                     </Link>
                   </Box>
