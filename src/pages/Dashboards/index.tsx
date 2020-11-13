@@ -74,7 +74,7 @@ function Dashboards() {
               <Grid item xs={6}>
                 <Link to="/tempo-vida">
                   <Paper className="primary-cards">
-                    <p className="title-cards">Tempo de Vida</p>
+                    <p className="title-cards">Check-up Financeiro</p>
 
                     <p className="life-time">
                       1 mês e <br /> meio

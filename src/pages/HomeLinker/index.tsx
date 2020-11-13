@@ -68,7 +68,7 @@ function Home() {
                 </Box>
 
                 <Box display="flex" flexDirection="column">
-                  <b className="hint">Sua empresa está bem!</b>
+                  <b className="hint">Saúde financeira ok!</b>
                   <Box
                     display="flex"
                     justifyContent="flex-end"
@@ -125,7 +125,7 @@ function Home() {
                 </Box>
 
                 <Box display="flex" flexDirection="column">
-                  <b className="hint white">Tempo de Vida</b>
+                  <b className="hint white">Check-up financeiro</b>
                   <Box
                     display="flex"
                     justifyContent="flex-end"

@@ -11,7 +11,7 @@ function LifeTime() {
         to="/dashboards"
         type="return"
       ></LinkerPageHeader>
-      <h1>Tempo de Vida</h1>
+      <h1>Check-up Financeiro</h1>
     </div>
   );
 }
