@@ -2,11 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import Card from "../../components/Card";
+import BubbleChart from "../../components/BubbleChart";
 
 import LinkerPageHeader from "../../components/LinkerPageHeader";
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
+import { Paper, Grid, Box } from "@material-ui/core";
 
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 // import Chart from "chart.js";
@@ -31,9 +30,11 @@ function Dashboards() {
           <section className="basic-chart">
             <h2 className="dashboards-title">Visão Geral</h2>
             <div className="dashboards-chart-container">
-              <span className="dashboards-chart-revenue"></span>
-              <span className="dashboards-chart-cost"></span>
-              <span className="dashboards-chart-future"></span>
+              <BubbleChart
+                revenue={2000}
+                cost={1000}
+                future={1250}
+              ></BubbleChart>
             </div>
 
             <Box

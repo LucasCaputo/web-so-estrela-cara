@@ -1,0 +1,33 @@
+#BubbleChart {
+  height: 40vh;
+  background: transparent;
+  position: relative;
+  padding: 1.6rem;
+}
+
+#BubbleChart .bubble {
+  position: absolute;
+  border-radius: 50%;
+}
+
+#BubbleChart .revenue {
+  background: var(--green);
+  bottom: 1.6rem;
+  bottom: 8vh;
+  right: 13vh;
+}
+
+#BubbleChart .cost {
+  background: var(--red);
+  right: 3.2rem;
+}
+
+#BubbleChart .future {
+  background: var(--orange);
+  bottom: 1.6rem;
+}
+
+#BubbleChart .white {
+  color: var(--light);
+  font-weight: 700;
+}
