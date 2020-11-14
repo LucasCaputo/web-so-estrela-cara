@@ -3,12 +3,13 @@ import { Link } from "react-router-dom";
 
 import SimpleMenu from "../../components/SimpleMenu";
 
+import logoImg from "../../assets/images/startMoney.svg";
+
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 
 import "./styles.css";
@@ -48,7 +49,7 @@ const PageHeader: React.FC<PageHeaderProps> = (props) => {
                 Senhor Barriga S/A
               </span>
             </Typography>
-            <Button className="liker-page-header__logo">Constelação ⛑</Button>
+            <img className="img" src={logoImg} alt="Logo" />
           </Toolbar>
         </AppBar>
       )}
@@ -70,7 +71,7 @@ const PageHeader: React.FC<PageHeaderProps> = (props) => {
               <span className="liker-page-header__company-name">Voltar</span>
             </Link>
 
-            <Button className="liker-page-header__logo">Constelação ⛑</Button>
+            <img className="img" src={logoImg} alt="Logo" />
           </Toolbar>
         </AppBar>
       )}

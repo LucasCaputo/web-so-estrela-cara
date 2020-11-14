@@ -33,7 +33,6 @@ export default function SimpleMenu() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}>Minha Conta</MenuItem>
         <Link to={"/"}>
           <MenuItem onClick={handleClose}>Logout</MenuItem>
         </Link>

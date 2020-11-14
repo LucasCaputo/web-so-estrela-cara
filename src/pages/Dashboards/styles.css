@@ -39,6 +39,60 @@
   height: 10rem;
 }
 
+#Dashboards .primary-cards.purple {
+  background: #ddadeb;
+  opacity: 0.5;
+}
+#Dashboards .primary-cards.purple .description.purple {
+  height: 10rem;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #1b1b1b;
+}
+
+#Dashboards .primary-cards.blue {
+  background: #bce2ff;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  opacity: 0.5;
+}
+#Dashboards .primary-cards.blue .description.blue {
+  height: 10rem;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #1b1b1b;
+}
+
 #Dashboards .secondary-cards {
-  height: 8rem;
+  height: 12rem;
+  border-radius: 1.6rem;
+  padding: 0.8rem;
+  font-size: 1.6rem;
+}
+#Dashboards .dashboards-container .secondary-cards .hint {
+  font-size: 1.25rem;
+  padding: 0.8rem;
+  padding-top: 0;
+}
+
+#Dashboards .dashboards-container .secondary-cards.import {
+  background: var(--red);
+}
+
+#Dashboards .dashboards-container .secondary-cards.results {
+  background: var(--green);
+}
+
+#Dashboards .dashboards-container .secondary-cards.cash {
+  background: var(--orange);
+}
+
+#Dashboards .dashboards-container .secondary-cards.lifetime {
+  background: var(--cyan);
+}
+
+#Dashboards .dashboards-container .secondary-cards .MuiSvgIcon-root {
+  font-size: 4rem;
+  margin-bottom: 1.6rem;
 }

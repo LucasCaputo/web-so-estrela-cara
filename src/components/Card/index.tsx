@@ -3,6 +3,8 @@ import "./styles.css";
 
 import { Box, Paper } from "@material-ui/core";
 
+import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
+
 interface CardProps {
   title: string;
   value: string;
@@ -30,6 +32,12 @@ const Card: React.FC<CardProps> = (props) => {
         <Box width="28%" className="card-value">
           {props.value} <span> {props.size === "medium" ? "R$" : ""}</span>
         </Box>
+
+        {props.size !== "medium" && (
+          <p>
+            <DeleteForeverIcon className="icon"></DeleteForeverIcon>{" "}
+          </p>
+        )}
       </Box>
     </Paper>
   );

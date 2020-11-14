@@ -2,7 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import LinkerPageHeader from "../../components/LinkerPageHeader";
-import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
+import VisibilityIcon from "@material-ui/icons/Visibility";
+// import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
@@ -31,7 +32,7 @@ function Home() {
           <Grid item xs={6}>
             <Paper className="primary-cards revenue">
               <Box display="flex" justifyContent="flex-end" className="icon">
-                <VisibilityOffIcon></VisibilityOffIcon>
+                <VisibilityIcon></VisibilityIcon>
               </Box>
 
               <h4 className="label">
@@ -98,8 +99,8 @@ function Home() {
 
         <Grid container spacing={3}>
           <Grid item xs={6}>
-            <Link to={"/cursos"}>
-              <Paper className="secondary-cards classes">
+            <Link to={"/home"}>
+              <Paper className="secondary-cards classes disabled">
                 <Box display="flex" justifyContent="flex-end" className="icon">
                   <LiveTvIcon></LiveTvIcon>
                 </Box>
@@ -125,7 +126,7 @@ function Home() {
                 </Box>
 
                 <Box display="flex" flexDirection="column">
-                  <b className="hint white">Check-up financeiro</b>
+                  <b className="hint white">Criar Cenário</b>
                   <Box
                     display="flex"
                     justifyContent="flex-end"
@@ -141,8 +142,8 @@ function Home() {
 
         <Grid container spacing={3}>
           <Grid item xs={6}>
-            <Link to={"/extrato"}>
-              <Paper className="secondary-cards pay">
+            <Link to={"/home"}>
+              <Paper className="secondary-cards pay disabled">
                 <Box display="flex" justifyContent="flex-end" className="icon">
                   <AddShoppingCartIcon></AddShoppingCartIcon>
                 </Box>
@@ -161,8 +162,8 @@ function Home() {
             </Link>
           </Grid>
           <Grid item xs={6}>
-            <Link to={"/extrato"}>
-              <Paper className="secondary-cards health">
+            <Link to={"/home"}>
+              <Paper className="secondary-cards health disabled">
                 <Box display="flex" justifyContent="flex-end" className="icon">
                   <AttachMoneyIcon></AttachMoneyIcon>
                 </Box>

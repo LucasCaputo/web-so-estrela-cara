@@ -87,3 +87,7 @@
   font-size: 1rem;
   padding: 0 0.8rem;
 }
+
+#Home .home-container .secondary-cards.disabled {
+  opacity: 0.5;
+}

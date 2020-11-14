@@ -13,7 +13,6 @@ import Extract from "./pages/Extract";
 import FlowResults from "./pages/FlowResults";
 import CashManagement from "./pages/CashManagement";
 import Integration from "./pages/Integration";
-import Classes from "./pages/Classes";
 
 function Routes() {
   return (
@@ -29,7 +28,6 @@ function Routes() {
       <Route path="/extrato" component={Extract} />
       <Route path="/resultados" component={FlowResults} />
       <Route path="/integracao" component={Integration} />
-      <Route path="/cursos" component={Classes} />
       <Route path="/caixa" component={CashManagement} />
 
       <Route path="/success" component={Success} />

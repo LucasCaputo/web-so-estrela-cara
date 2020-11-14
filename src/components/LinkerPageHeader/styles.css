@@ -28,7 +28,6 @@
   color: var(--gray) !important;
 }
 
-@media (min-width: 700px) {
-  #LinkerPageHeader {
-  }
+#LinkerPageHeader img {
+  height: 40px;
 }
