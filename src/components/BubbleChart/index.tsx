@@ -6,7 +6,7 @@ import { Box } from "@material-ui/core";
 interface BubbleChartProps {
   revenue: number;
   cost: number;
-  future: number;
+  future?: number;
 }
 
 const BubbleChart: React.FC<BubbleChartProps> = (props) => {
@@ -33,7 +33,7 @@ const BubbleChart: React.FC<BubbleChartProps> = (props) => {
           R$ {props.cost}
         </Box>
       </Box>
-
+      {/* 
       <Box className="bubble white future" width="130px" height="130px">
         <Box
           display="flex"
@@ -43,7 +43,7 @@ const BubbleChart: React.FC<BubbleChartProps> = (props) => {
         >
           R$ {props.future}
         </Box>
-      </Box>
+      </Box> */}
     </Box>
   );
 };

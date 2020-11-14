@@ -17,6 +17,7 @@ import HistoryIcon from "@material-ui/icons/History";
 // import Chart from "chart.js";
 
 import "./styles.css";
+import Select from "../../components/Select";
 
 interface ITransaction {
   id: number;
@@ -36,6 +37,7 @@ interface IBalance {
 function Dashboards() {
   const [balance, setBalance] = useState<IBalance>();
   const [values, setValues] = useState({ receita: 0, gastos: 0 });
+  const [month, setMonth] = useState("");
 
   useEffect(() => {
     async function loadData() {
@@ -88,7 +90,32 @@ function Dashboards() {
       >
         <Box width="90%" paddingBottom="3.2rem">
           <section className="basic-chart">
-            <h2 className="dashboards-title">Visão Geral</h2>
+            <Box>
+              <h2 className="dashboards-title">Visão Geral</h2>
+              <Select
+                name="month"
+                label=""
+                value={month}
+                onChange={(e) => {
+                  setMonth(e.target.value);
+                }}
+                options={[
+                  { value: "1", label: "Janeiro" },
+                  { value: "2", label: "Fevereiro" },
+                  { value: "3", label: "Março" },
+                  { value: "4", label: "Abril" },
+                  { value: "5", label: "Maio" },
+                  { value: "6", label: "Junho" },
+                  { value: "7", label: "Julho" },
+                  { value: "8", label: "Agosto" },
+                  { value: "9", label: "Setembro" },
+                  { value: "10", label: "Outubro" },
+                  { value: "11", label: "Novembro" },
+                  { value: "12", label: "Dezembro" },
+                ]}
+              />
+            </Box>
+
             <div className="dashboards-chart-container">
               <BubbleChart
                 revenue={values.receita}
@@ -116,12 +143,12 @@ function Dashboards() {
                 value={values.gastos}
                 size="medium"
               ></Card>
-              <Card
+              {/* <Card
                 title="Gastos Futuros"
                 color="orange"
                 value={1250}
                 size="medium"
-              ></Card>
+              ></Card> */}
             </Box>
           </section>
 
@@ -241,7 +268,7 @@ function Dashboards() {
 
             <Box
               display="flex"
-              flexDirection="column"
+              flexDirection="column-reverse"
               width="100%"
               gridGap="8px"
             >

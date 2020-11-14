@@ -8,6 +8,8 @@ import { Box } from "@material-ui/core";
 import api from "../../services/api";
 
 import "./styles.css";
+import Select from "../../components/Select";
+import Input from "../../components/Input";
 
 interface ITransaction {
   id: number;
@@ -27,6 +29,11 @@ interface IBalance {
 function Extract() {
   const [balance, setBalance] = useState<IBalance>();
   const [values, setValues] = useState({ receita: 0, gastos: 0 });
+  const [type, setType] = useState("");
+  const [value, setValue] = useState("");
+  const [name, setName] = useState("");
+  const [date, setDate] = useState("");
+  const [month, setMonth] = useState("");
 
   useEffect(() => {
     async function loadData() {
@@ -64,6 +71,22 @@ function Extract() {
     loadData();
   }, []);
 
+  async function handleSubmit() {
+    if (type === "cost") setValue(`-${value}`);
+
+    console.log(value);
+    try {
+      console.log(name, value, date, type);
+      await api.post("/balances/1/transactions", {
+        name,
+        value,
+        day_register_at: 18,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   return (
     <div id="Extract">
       <LinkerPageHeader
@@ -79,6 +102,28 @@ function Extract() {
       >
         <Box width="90%" paddingBottom="3.2rem">
           <section className="basic-chart">
+            <Select
+              name="month"
+              label=""
+              value={month}
+              onChange={(e) => {
+                setMonth(e.target.value);
+              }}
+              options={[
+                { value: "1", label: "Janeiro" },
+                { value: "2", label: "Fevereiro" },
+                { value: "3", label: "Março" },
+                { value: "4", label: "Abril" },
+                { value: "5", label: "Maio" },
+                { value: "6", label: "Junho" },
+                { value: "7", label: "Julho" },
+                { value: "8", label: "Agosto" },
+                { value: "9", label: "Setembro" },
+                { value: "10", label: "Outubro" },
+                { value: "11", label: "Novembro" },
+                { value: "12", label: "Dezembro" },
+              ]}
+            />
             <div className="dashboards-chart-container">
               <BubbleChart
                 revenue={values.receita}
@@ -86,7 +131,70 @@ function Extract() {
                 future={1250}
               ></BubbleChart>
             </div>
+          </section>
+
+          <section className="inputdata">
             <h2 className="extract-title">Adicionar Lançamentos</h2>
+
+            <Input
+              name="name"
+              label=""
+              type="text"
+              placeholder="Digite um identificador"
+              value={name}
+              onChange={(event) => {
+                const { value } = event.target;
+
+                setName(value);
+              }}
+            />
+
+            <Box display="flex">
+              <Box width="40%">
+                <Select
+                  name="type"
+                  label=""
+                  value={type}
+                  onChange={(e) => {
+                    setType(e.target.value);
+                  }}
+                  options={[
+                    { value: "revenue", label: "Entrada", class: "--bg-green" },
+                    { value: "cost", label: "Saída", class: "--bg-red" },
+                  ]}
+                />
+              </Box>
+
+              <Input
+                name="value"
+                label=""
+                type="number"
+                placeholder="Valor"
+                value={value}
+                onChange={(event) => {
+                  const { value } = event.target;
+
+                  setValue(value);
+                }}
+              />
+            </Box>
+
+            <Box>
+              <Input
+                name="date"
+                label=""
+                type="date"
+                value={date}
+                onChange={(event) => {
+                  const { value } = event.target;
+
+                  setDate(value);
+                }}
+              />
+              <button className="button medium" onClick={handleSubmit}>
+                Cadastrar
+              </button>
+            </Box>
           </section>
 
           <section className="dashboards-last-releases">
@@ -94,7 +202,7 @@ function Extract() {
 
             <Box
               display="flex"
-              flexDirection="column"
+              flexDirection="column-reverse"
               width="100%"
               gridGap="8px"
             >

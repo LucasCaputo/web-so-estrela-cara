@@ -1,9 +1,9 @@
 import React, {
-    useState,
-    FormEvent,
-    useMemo,
-    useCallback,
-    ChangeEvent
+  useState,
+  FormEvent,
+  useMemo,
+  useCallback,
+  ChangeEvent,
 } from "react";
 import { useHistory } from "react-router-dom";
 
@@ -15,159 +15,157 @@ import avatarImage from "../../assets/images/avatar.png";
 
 import "./styles.css";
 import TextArea from "../../components/TextArea";
-import Select from "../../components/Select";
+// import Select from "../../components/Select";
 import api from "../../services/api";
 
 function TeacherForm() {
-    const history = useHistory();
+  const history = useHistory();
 
-    const [name, setName] = useState("");
-    const [avatar, setAvatar] = useState<File>();
-    const [whatsapp, setWhatsapp] = useState("");
-    const [biography, setBiography] = useState("");
+  const [name, setName] = useState("");
+  const [avatar, setAvatar] = useState<File>();
+  const [whatsapp, setWhatsapp] = useState("");
+  const [biography, setBiography] = useState("");
 
-    const [subject, setSubject] = useState("");
-    const [cost, setCost] = useState("");
+  //   const [subject, setSubject] = useState("");
+  const [cost, setCost] = useState("");
 
+  const [messageBtn, setMessageBtn] = useState("");
 
-    const [messageBtn, setMessageBtn] = useState("");
+  const [scheduleItems, setScheduleItems] = useState([
+    {
+      week_day: 0,
+      from: "",
+      to: "",
+    },
+  ]);
 
-    const [scheduleItems, setScheduleItems] = useState([
-        {
-            week_day: 0,
-            from: "",
-            to: ""
-        }
-    ]);
+  // function addNewScheduleItem() {
+  //     setScheduleItems([
+  //         ...scheduleItems,
+  //         {
+  //             week_day: 0,
+  //             from: "",
+  //             to: ""
+  //         }
+  //     ]);
+  // }
 
-    // function addNewScheduleItem() {
-    //     setScheduleItems([
-    //         ...scheduleItems,
-    //         {
-    //             week_day: 0,
-    //             from: "",
-    //             to: ""
-    //         }
-    //     ]);
-    // }
+  function setScheduleItemValue(
+    position: number,
+    field: string,
+    value: string
+  ) {
+    const updatedScheduleItems = scheduleItems.map((scheduleItem, index) => {
+      if (index === position) {
+        return {
+          ...scheduleItem,
+          [field]: value,
+        };
+      }
 
-    function setScheduleItemValue(
-        position: number,
-        field: string,
-        value: string
-    ) {
-        const updatedScheduleItems = scheduleItems.map(
-            (scheduleItem, index) => {
-                if (index === position) {
-                    return {
-                        ...scheduleItem,
-                        [field]: value
-                    };
-                }
+      return scheduleItem;
+    });
 
-                return scheduleItem;
-            }
-        );
+    setScheduleItems(updatedScheduleItems);
+  }
 
-        setScheduleItems(updatedScheduleItems);
-    }
+  function handleCreateClass(e: FormEvent) {
+    e.preventDefault();
 
-    function handleCreateClass(e: FormEvent) {
-        e.preventDefault();
+    setMessageBtn("Enviando...");
 
-        setMessageBtn("Enviando...");
+    api
+      .post("classes", {
+        name,
+        avatar,
+        whatsapp,
+        biography,
+        // subject,
+        cost: Number(cost),
+        schedule: scheduleItems,
+      })
+      .then(() => {
+        history.push("/success");
+      })
+      .catch(() => {
+        setMessageBtn("Verifique seus dados");
+      });
 
-        api.post("classes", {
-            name,
-            avatar,
-            whatsapp,
-            biography,
-            subject,
-            cost: Number(cost),
-            schedule: scheduleItems
-        })
-            .then(() => {
-                history.push("/success");
-            })
-            .catch(() => {
-                setMessageBtn("Verifique seus dados");
-            });
+    console.log({
+      name,
+      avatar,
+      whatsapp,
+      biography,
+      //   subject,
+      cost,
+      scheduleItems,
+    });
+  }
 
-        console.log({
-            name,
-            avatar,
-            whatsapp,
-            biography,
-            subject,
-            cost,
-            scheduleItems
-        });
-    }
+  const handleUploadAvatar = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      if (event.target.files) {
+        setAvatar(event.target.files[0]);
+      }
+    },
+    []
+  );
 
-    const handleUploadAvatar = useCallback(
-        (event: ChangeEvent<HTMLInputElement>) => {
-            if (event.target.files) {
-                setAvatar(event.target.files[0]);
-            }
-        },
-        []
-    );
+  const preview = useMemo(() => {
+    return avatar ? URL.createObjectURL(avatar) : avatarImage;
+  }, [avatar]);
 
-    const preview = useMemo(() => {
-        return avatar ? URL.createObjectURL(avatar) : avatarImage;
-    }, [avatar]);
+  return (
+    <div id="page-teacher-form" className="container">
+      <PageHeader
+        title="Que incrível mais um atendimento"
+        description="Agora você deve preencher o formulário"
+        to="/home"
+      />
 
-    return (
-        <div id="page-teacher-form" className="container">
-            <PageHeader
-                title="Que incrível mais um atendimento"
-                description="Agora você deve preencher o formulário"
-                to="/home"
+      <main>
+        <form onSubmit={handleCreateClass}>
+          <fieldset>
+            <legend>Cliente</legend>
+
+            <div id="input-file">
+              <span
+                className="avatar-image"
+                style={{ backgroundImage: `url(${preview})` }}
+              />
+              <input
+                id="file"
+                name="avatar"
+                type="file"
+                accept=".png, .jpeg, .jpg"
+                onChange={handleUploadAvatar}
+              />
+              <label className="upload-label" htmlFor="file">
+                Adicionar foto
+              </label>
+            </div>
+
+            <Input
+              name="name"
+              label="Nome completo"
+              value={name}
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
             />
+            <Input
+              name="whatsapp"
+              label="WhatsApp"
+              value={whatsapp}
+              onChange={(e) => {
+                setWhatsapp(e.target.value);
+              }}
+            />
+          </fieldset>
+          <fieldset>
+            <legend>Serviço</legend>
 
-            <main>
-                <form onSubmit={handleCreateClass}>
-                    <fieldset>
-                        <legend>Cliente</legend>
-
-                        <div id="input-file">
-                            <span
-                                className="avatar-image"
-                                style={{ backgroundImage: `url(${preview})` }}
-                            />
-                            <input
-                                id="file"
-                                name="avatar"
-                                type="file"
-                                accept=".png, .jpeg, .jpg"
-                                onChange={handleUploadAvatar}
-                            />
-                            <label className="upload-label" htmlFor="file">
-                                Adicionar foto
-                            </label>
-                        </div>
-
-                        <Input
-                            name="name"
-                            label="Nome completo"
-                            value={name}
-                            onChange={(e) => {
-                                setName(e.target.value);
-                            }}
-                        />
-                        <Input
-                            name="whatsapp"
-                            label="WhatsApp"
-                            value={whatsapp}
-                            onChange={(e) => {
-                                setWhatsapp(e.target.value);
-                            }}
-                        />
-                    </fieldset>
-                    <fieldset>
-                        <legend>Serviço</legend>
-
-                        <Select
+            {/* <Select
                             name="subject"
                             label="Serviço"
                             value={subject}
@@ -187,40 +185,37 @@ function TeacherForm() {
                                 { value: "Selagem", label: "Selagem" },
                                 { value: "Progressiva", label: "Progressiva" }
                             ]}
-                        />
-                        <Input
-                            name="cost"
-                            label="Valor total somente números"
-                            value={cost}
-                            onChange={(e) => {
-                                setCost(e.target.value);
-                            }}
-                        />
-                        <TextArea
-                            name="bio"
-                            label="Observações"
-                            value={biography}
-                            onChange={(e) => {
-                                setBiography(e.target.value);
-                            }}
-                        />
-                    </fieldset>
+                        /> */}
+            <Input
+              name="cost"
+              label="Valor total somente números"
+              value={cost}
+              onChange={(e) => {
+                setCost(e.target.value);
+              }}
+            />
+            <TextArea
+              name="bio"
+              label="Observações"
+              value={biography}
+              onChange={(e) => {
+                setBiography(e.target.value);
+              }}
+            />
+          </fieldset>
 
-                    <fieldset>
-                        <legend>
-                            Horário
-                            {/* <button type="button" onClick={addNewScheduleItem}>
+          <fieldset>
+            <legend>
+              Horário
+              {/* <button type="button" onClick={addNewScheduleItem}>
                                 + Novo horário
                             </button> */}
-                        </legend>
+            </legend>
 
-                        {scheduleItems.map((scheduleItem, index) => {
-                            return (
-                                <div
-                                    key={scheduleItem.week_day}
-                                    className="schedule-item"
-                                >
-                                    <Select
+            {scheduleItems.map((scheduleItem, index) => {
+              return (
+                <div key={scheduleItem.week_day} className="schedule-item">
+                  {/* <Select
                                         name="week-day"
                                         label="Dia da semana"
                                         value={scheduleItem.week_day}
@@ -255,52 +250,42 @@ function TeacherForm() {
                                             },
                                             { value: "6", label: "Sábado" }
                                         ]}
-                                    />
-                                    <Input
-                                        name="from"
-                                        label="Das"
-                                        type="time"
-                                        value={scheduleItem.from}
-                                        onChange={(e) =>
-                                            setScheduleItemValue(
-                                                index,
-                                                "from",
-                                                e.target.value
-                                            )
-                                        }
-                                    />
-                                    <Input
-                                        name="to"
-                                        label="Até"
-                                        type="time"
-                                        value={scheduleItem.to}
-                                        onChange={(e) =>
-                                            setScheduleItemValue(
-                                                index,
-                                                "to",
-                                                e.target.value
-                                            )
-                                        }
-                                    />
-                                </div>
-                            );
-                        })}
-                    </fieldset>
+                                    /> */}
+                  <Input
+                    name="from"
+                    label="Das"
+                    type="time"
+                    value={scheduleItem.from}
+                    onChange={(e) =>
+                      setScheduleItemValue(index, "from", e.target.value)
+                    }
+                  />
+                  <Input
+                    name="to"
+                    label="Até"
+                    type="time"
+                    value={scheduleItem.to}
+                    onChange={(e) =>
+                      setScheduleItemValue(index, "to", e.target.value)
+                    }
+                  />
+                </div>
+              );
+            })}
+          </fieldset>
 
-                    <footer>
-                        <p>
-                            <img src={warningIcon} alt="Aviso importante" />
-                            Importante! <br />
-                            Preencha todos os dados
-                        </p>
-                        <button type="submit">
-                            {messageBtn || "Salvar cadastro"}
-                        </button>
-                    </footer>
-                </form>
-            </main>
-        </div>
-    );
+          <footer>
+            <p>
+              <img src={warningIcon} alt="Aviso importante" />
+              Importante! <br />
+              Preencha todos os dados
+            </p>
+            <button type="submit">{messageBtn || "Salvar cadastro"}</button>
+          </footer>
+        </form>
+      </main>
+    </div>
+  );
 }
 
 export default TeacherForm;

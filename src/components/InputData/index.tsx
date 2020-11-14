@@ -2,24 +2,28 @@ import React, { SelectHTMLAttributes } from "react";
 
 import "./styles.css";
 
-interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
+interface InputDataProps extends SelectHTMLAttributes<HTMLSelectElement> {
   name: string;
   label: string;
   options: Array<{
     value: string;
     label: string;
-    class?: string;
   }>;
 }
 
-const Select: React.FC<SelectProps> = ({ label, name, options, ...rest }) => {
+const InputData: React.FC<InputDataProps> = ({
+  label,
+  name,
+  options,
+  ...rest
+}) => {
   return (
     <div className="select-block">
       <label htmlFor={name}>{label}</label>
       <select value="" id={name} {...rest}>
-        {/* <option value="" disabled hidden>
+        <option value="" disabled hidden>
           Selecione uma opção
-        </option> */}
+        </option>
 
         {options.map((option) => {
           return (
@@ -33,4 +37,4 @@ const Select: React.FC<SelectProps> = ({ label, name, options, ...rest }) => {
   );
 };
 
-export default Select;
+export default InputData;

@@ -3,6 +3,7 @@ import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 
 import "./assets/styles/global.css";
+import "./assets/styles/colors.css";
 import Routes from "./routes";
 import AppProvider from "./hooks";
 

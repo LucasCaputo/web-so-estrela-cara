@@ -111,10 +111,14 @@ textarea,
   margin: 3.2rem 0;
   font: 600 1.8rem Archivo;
   line-height: 2.8rem;
-  color: var(--color-title-in-primary);
+  color: var(--color-title-in-primary) !important;
   cursor: pointer;
   transition: background-color 0.2s;
   text-decoration: none;
+}
+
+.button.medium {
+  width: 60%;
 }
 
 @media (min-width: 700px) {
