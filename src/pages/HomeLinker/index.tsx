@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import LinkerPageHeader from "../../components/LinkerPageHeader";
 import VisibilityIcon from "@material-ui/icons/Visibility";
-// import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
+import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
@@ -19,6 +19,8 @@ import TimelineIcon from "@material-ui/icons/Timeline";
 import "./styles.css";
 
 function Home() {
+  const [isVisible, setIsVisible] = useState(false);
+
   return (
     <div id="Home">
       <LinkerPageHeader
@@ -31,8 +33,15 @@ function Home() {
         <Grid container spacing={3}>
           <Grid item xs={6}>
             <Paper className="primary-cards revenue">
-              <Box display="flex" justifyContent="flex-end" className="icon">
-                <VisibilityIcon></VisibilityIcon>
+              <Box
+                display="flex"
+                justifyContent="flex-end"
+                className="icon"
+                onClick={() => {
+                  setIsVisible(!isVisible);
+                }}
+              >
+                {isVisible ? <VisibilityIcon /> : <VisibilityOffIcon />}
               </Box>
 
               <h4 className="label">
@@ -40,7 +49,7 @@ function Home() {
                 Disponível
               </h4>
               <h6 className="value">
-                <b>R$</b> 10.000,00
+                <b>R$</b> {isVisible ? "10.000,00" : "******"}
               </h6>
             </Paper>
           </Grid>

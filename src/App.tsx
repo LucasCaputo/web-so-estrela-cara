@@ -4,6 +4,7 @@ import { ThemeProvider } from "@material-ui/styles";
 
 import "./assets/styles/global.css";
 import Routes from "./routes";
+import AppProvider from "./hooks";
 
 const theme = createMuiTheme({
   palette: {
@@ -21,7 +22,9 @@ const theme = createMuiTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Routes />
+      <AppProvider>
+        <Routes />
+      </AppProvider>
     </ThemeProvider>
   );
 }

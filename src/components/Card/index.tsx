@@ -7,7 +7,7 @@ import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 
 interface CardProps {
   title: string;
-  value: string;
+  value: number;
   color: string;
   size: string;
 }

@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import Card from "../../components/Card";
 import BubbleChart from "../../components/BubbleChart";
 
 import LinkerPageHeader from "../../components/LinkerPageHeader";
@@ -49,7 +48,7 @@ function Dashboards() {
               gridGap="16px"
             >
               <p className="dashboards-title">O gráfico acima representa:</p>
-              <Card
+              {/* <Card
                 title="Entradas"
                 color="green"
                 value="2.000,00"
@@ -66,7 +65,7 @@ function Dashboards() {
                 color="orange"
                 value="1.250,00"
                 size="medium"
-              ></Card>
+              ></Card> */}
             </Box>
           </section>
 
@@ -190,7 +189,7 @@ function Dashboards() {
               width="100%"
               gridGap="8px"
             >
-              <Card
+              {/* <Card
                 title="Venda Cliente Clara"
                 color="green"
                 value="200,00"
@@ -222,7 +221,7 @@ function Dashboards() {
               ></Card>
 
               <Card title="Água" color="red" value="100,00" size="small"></Card>
-              <Card title="Luz" color="red" value="100,00" size="small"></Card>
+              <Card title="Luz" color="red" value="100,00" size="small"></Card> */}
             </Box>
           </section>
         </Box>

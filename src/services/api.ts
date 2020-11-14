@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: "https://renatareis-deploy.herokuapp.com/"
+  baseURL: "http://api.mega-hack.devmatheus.com/",
 });
 
 export default api;
