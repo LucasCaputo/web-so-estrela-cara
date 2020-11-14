@@ -1,4 +1,5 @@
 import React from "react";
+import BasicTable from "../../components/Table";
 
 import LinkerPageHeader from "../../components/LinkerPageHeader";
 import "./styles.css";
@@ -12,6 +13,8 @@ function LifeTime() {
         type="return"
       ></LinkerPageHeader>
       <h1>Criar Cenários</h1>
+
+      <BasicTable></BasicTable>
     </div>
   );
 }

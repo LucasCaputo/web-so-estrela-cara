@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import BubbleChart from "../../components/BubbleChart";
-
+import api from "../../services/api";
 import LinkerPageHeader from "../../components/LinkerPageHeader";
+import BubbleChart from "../../components/BubbleChart";
+import Card from "../../components/Card";
+
 import { Paper, Grid, Box } from "@material-ui/core";
 
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
@@ -16,7 +18,61 @@ import HistoryIcon from "@material-ui/icons/History";
 
 import "./styles.css";
 
+interface ITransaction {
+  id: number;
+  name: string;
+  value: number;
+}
+
+interface IBalance {
+  gross_revenue: number;
+  id: number;
+  percentage_of_taxes: number;
+  reference_month: string;
+  total_spend: number;
+  transactions: ITransaction[];
+}
+
 function Dashboards() {
+  const [balance, setBalance] = useState<IBalance>();
+  const [values, setValues] = useState({ receita: 0, gastos: 0 });
+
+  useEffect(() => {
+    async function loadData() {
+      try {
+        const response = await api.get("/balances", {
+          params: {
+            reference_month: "11/2020",
+          },
+        });
+
+        const balance_data = response.data[0] as IBalance;
+
+        // Remover esse array depois que arrumar o backend
+        setBalance(balance_data);
+
+        // soma total de receita e gastos
+        const { gastos, receita } = balance_data.transactions.reduce(
+          (accumulator, transaction) => {
+            if (transaction.value < 0) {
+              accumulator["gastos"] += transaction.value;
+            } else {
+              accumulator["receita"] += transaction.value;
+            }
+            return accumulator;
+          },
+          { receita: 0, gastos: 0 }
+        );
+
+        setValues({ gastos, receita });
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    loadData();
+  }, []);
+
   return (
     <div id="Dashboards">
       <LinkerPageHeader
@@ -35,8 +91,8 @@ function Dashboards() {
             <h2 className="dashboards-title">Visão Geral</h2>
             <div className="dashboards-chart-container">
               <BubbleChart
-                revenue={2000}
-                cost={1000}
+                revenue={values.receita}
+                cost={values.gastos}
                 future={1250}
               ></BubbleChart>
             </div>
@@ -48,24 +104,24 @@ function Dashboards() {
               gridGap="16px"
             >
               <p className="dashboards-title">O gráfico acima representa:</p>
-              {/* <Card
+              <Card
                 title="Entradas"
                 color="green"
-                value="2.000,00"
+                value={values.receita}
                 size="medium"
               ></Card>
               <Card
                 title="Saídas"
                 color="red"
-                value="1.000,00"
+                value={values.gastos}
                 size="medium"
               ></Card>
               <Card
                 title="Gastos Futuros"
                 color="orange"
-                value="1.250,00"
+                value={1250}
                 size="medium"
-              ></Card> */}
+              ></Card>
             </Box>
           </section>
 
@@ -189,39 +245,15 @@ function Dashboards() {
               width="100%"
               gridGap="8px"
             >
-              {/* <Card
-                title="Venda Cliente Clara"
-                color="green"
-                value="200,00"
-                size="small"
-              ></Card>
-              <Card
-                title="Venda Cliente Daniela"
-                color="green"
-                value="120,00"
-                size="small"
-              ></Card>
-              <Card
-                title="Compra Peça Máquina"
-                color="red"
-                value="100,00"
-                size="small"
-              ></Card>
-              <Card
-                title="Venda Cliente Roberta"
-                color="green"
-                value="20,00"
-                size="small"
-              ></Card>
-              <Card
-                title="Compra de Peça"
-                color="orange"
-                value="50,00"
-                size="small"
-              ></Card>
-
-              <Card title="Água" color="red" value="100,00" size="small"></Card>
-              <Card title="Luz" color="red" value="100,00" size="small"></Card> */}
+              {balance?.transactions?.map((transaction) => (
+                <Card
+                  key={transaction.id}
+                  title={transaction.name}
+                  color={transaction.value > 0 ? "green" : "red"}
+                  value={transaction.value}
+                  size="small"
+                />
+              ))}
             </Box>
           </section>
         </Box>

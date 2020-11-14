@@ -86,7 +86,7 @@ function Extract() {
                 future={1250}
               ></BubbleChart>
             </div>
-            {/* <h2 className="extract-title">Adicionar Lançamentos</h2> */}
+            <h2 className="extract-title">Adicionar Lançamentos</h2>
           </section>
 
           <section className="dashboards-last-releases">
@@ -107,34 +107,6 @@ function Extract() {
                   size="small"
                 />
               ))}
-
-              {/* <Card
-                title="Venda Cliente Daniela"
-                color="green"
-                value="120,00"
-                size="small"
-              ></Card>
-              <Card
-                title="Compra Peça Máquina"
-                color="red"
-                value="100,00"
-                size="small"
-              ></Card>
-              <Card
-                title="Venda Cliente Roberta"
-                color="green"
-                value="20,00"
-                size="small"
-              ></Card>
-              <Card
-                title="Compra de Peça"
-                color="orange"
-                value="50,00"
-                size="small"
-              ></Card>
-
-              <Card title="Água" color="red" value="100,00" size="small"></Card>
-              <Card title="Luz" color="red" value="100,00" size="small"></Card> */}
             </Box>
           </section>
         </Box>
