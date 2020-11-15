@@ -5,6 +5,7 @@ import LinkerPageHeader from "../../components/LinkerPageHeader";
 import image from "../../assets/images/icons/description-cash.svg";
 
 import "./styles.css";
+import CashManagementGraph from "../../components/graphs/CashManagementGraph";
 
 function CashManagement() {
   return (
@@ -15,7 +16,7 @@ function CashManagement() {
         type="return"
       ></LinkerPageHeader>
       <h1 className="cashManagement-title">Gestão de Caixa</h1>
-
+      <CashManagementGraph />
       <img src={image} alt="Gestão de Caixa" className="image" />
     </div>
   );
