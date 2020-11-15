@@ -78,7 +78,7 @@ function Home() {
                 </Box>
 
                 <Box display="flex" flexDirection="column">
-                  <b className="hint">Saúde financeira ok!</b>
+                  <b className="hint">Saúde financeira</b>
                   <Box
                     display="flex"
                     justifyContent="flex-end"

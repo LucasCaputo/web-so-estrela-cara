@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 
 import Card from "../../components/Card";
 import BubbleChart from "../../components/BubbleChart";
@@ -27,6 +28,8 @@ interface IBalance {
 }
 
 function Extract() {
+  const history = useHistory();
+
   const [balance, setBalance] = useState<IBalance>();
   const [values, setValues] = useState({ receita: 0, gastos: 0 });
   const [type, setType] = useState("");
@@ -72,11 +75,7 @@ function Extract() {
   }, []);
 
   async function handleSubmit() {
-    if (type === "cost") setValue(`-${value}`);
-
-    console.log(value);
     try {
-      console.log(name, value, date, type);
       await api.post("/balances/1/transactions", {
         name,
         value,
@@ -84,6 +83,8 @@ function Extract() {
       });
     } catch (err) {
       console.log(err);
+    } finally {
+      history.go(0);
     }
   }
 
@@ -128,7 +129,6 @@ function Extract() {
               <BubbleChart
                 revenue={values.receita}
                 cost={values.gastos}
-                future={1250}
               ></BubbleChart>
             </div>
           </section>

@@ -120,7 +120,6 @@ function Dashboards() {
               <BubbleChart
                 revenue={values.receita}
                 cost={values.gastos}
-                future={1250}
               ></BubbleChart>
             </div>
 

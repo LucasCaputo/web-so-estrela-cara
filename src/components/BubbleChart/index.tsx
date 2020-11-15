@@ -6,13 +6,26 @@ import { Box } from "@material-ui/core";
 interface BubbleChartProps {
   revenue: number;
   cost: number;
-  future?: number;
 }
 
 const BubbleChart: React.FC<BubbleChartProps> = (props) => {
+  let total = props.revenue + Math.abs(props.cost);
+
+  let revenuePercent = props.revenue / total;
+
+  let costPercent = Math.abs(props.cost) / total;
+
+  const bubbleRevenue = 250 * revenuePercent;
+
+  const bubbleCost = 250 * costPercent;
+
   return (
     <Box id="BubbleChart" display="flex">
-      <Box className="bubble white revenue" width="180px" height="180px">
+      <Box
+        className="bubble white revenue"
+        width={`${bubbleRevenue}px`}
+        height={`${bubbleRevenue}px`}
+      >
         <Box
           display="flex"
           alignItems="center"
@@ -23,7 +36,11 @@ const BubbleChart: React.FC<BubbleChartProps> = (props) => {
         </Box>
       </Box>
 
-      <Box className="bubble white cost" width="120px" height="120px">
+      <Box
+        className="bubble white cost"
+        width={`${bubbleCost}px`}
+        height={`${bubbleCost}px`}
+      >
         <Box
           display="flex"
           alignItems="center"
@@ -33,17 +50,6 @@ const BubbleChart: React.FC<BubbleChartProps> = (props) => {
           R$ {props.cost}
         </Box>
       </Box>
-      {/* 
-      <Box className="bubble white future" width="130px" height="130px">
-        <Box
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          height="100%"
-        >
-          R$ {props.future}
-        </Box>
-      </Box> */}
     </Box>
   );
 };
