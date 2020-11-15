@@ -63,7 +63,7 @@ function Dashboards() {
         toast.error(renderMessageError(error));
       }
     },
-    [month, year],
+    [month, year]
   );
 
   console.log(month, "/", year);
@@ -157,7 +157,7 @@ function Dashboards() {
           </section>
 
           <section className="dashboards-container">
-            <Link to="/extrato" className="button medium">
+            <Link to="/extrato" className="button">
               Gerenciar Lançamentos
             </Link>
 

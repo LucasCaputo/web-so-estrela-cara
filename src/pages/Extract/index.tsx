@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import Card from "../../components/Card";
 import BubbleChart from "../../components/BubbleChart";
@@ -80,6 +81,9 @@ function Extract() {
         value: value_validated,
         day_register_at,
       });
+      const toastId = toast.info("Cadastro realizado com sucesso", {
+        autoClose: false,
+      });
 
       loadData();
     } catch (err) {
@@ -88,8 +92,16 @@ function Extract() {
   }
 
   async function handleRemove(id: number) {
-    await api.delete(`/balances/${balance?.id}/transactions/${id}`);
-    loadData();
+    try {
+      await api.delete(`/balances/${balance?.id}/transactions/${id}`);
+
+      loadData();
+      const toastId = toast.error("Cadastro excluído com sucesso", {
+        autoClose: false,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (

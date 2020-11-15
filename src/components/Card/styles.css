@@ -43,4 +43,5 @@
 
 #Card .card-value {
   color: var(--dark-dark);
+  font-size: 1.4rem;
 }

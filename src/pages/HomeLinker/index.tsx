@@ -99,7 +99,7 @@ function Home() {
                 </Box>
 
                 <Box display="flex" flexDirection="column" textAlign="end">
-                  <b className="hint white">Importe seus dados da Linker</b>
+                  <b className="hint white">Importe seus dados</b>
                 </Box>
               </Paper>
             </Link>

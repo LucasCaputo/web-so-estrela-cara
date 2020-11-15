@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import Input from "../../components/Input";
 import PageHeaderLogo from "../../components/PageHeaderLogo";
@@ -22,6 +23,10 @@ function Login() {
       await signIn({
         email,
         password,
+      });
+
+      const toastId = toast.info("Login realizado com sucesso", {
+        autoClose: false,
       });
 
       history.push("/home");

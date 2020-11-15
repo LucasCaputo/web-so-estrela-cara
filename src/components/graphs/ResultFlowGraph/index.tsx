@@ -8,7 +8,7 @@ const ResultFlowGraph = () => {
     labels: ["10", "11", "12", "13", "Ontem", "Hoje"],
     datasets: [
       {
-        label: "Saídas",
+        label: "Resultado",
         backgroundColor: "transparent",
         borderColor: "#3270cd",
         data: [-7000, -1675, -289, 0, 6000, 7875],
