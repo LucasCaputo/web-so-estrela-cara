@@ -24,7 +24,6 @@
 
 #Integration .integration-container label {
   padding: 20px 10px;
-  background: var(--color-primary);
   color: #fff;
   text-transform: uppercase;
   display: block;

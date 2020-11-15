@@ -2,6 +2,8 @@ import React from "react";
 
 import LinkerPageHeader from "../../components/LinkerPageHeader";
 
+import image from "../../assets/images/icons/description-cash.svg";
+
 import "./styles.css";
 
 function CashManagement() {
@@ -12,7 +14,9 @@ function CashManagement() {
         to="/dashboards"
         type="return"
       ></LinkerPageHeader>
-      <h1>Gestão de Caixa</h1>
+      <h1 className="cashManagement-title">Gestão de Caixa</h1>
+
+      <img src={image} alt="Gestão de Caixa" className="image" />
     </div>
   );
 }

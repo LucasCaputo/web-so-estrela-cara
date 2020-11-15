@@ -10,6 +10,7 @@ interface CardProps {
   value: number;
   color: string;
   size: string;
+  date?: string;
   handleRemove?: Function;
 }
 
@@ -27,6 +28,7 @@ const Card: React.FC<CardProps> = ({ handleRemove, ...props }) => {
             className="card-title"
             dangerouslySetInnerHTML={{ __html: props.title }}
           ></strong>
+          <p className="card-date">{props.date}</p>
         </Box>
         <Box width="28%" className="card-value">
           {props.value} <span> {props.size === "medium" ? "R$" : ""}</span>

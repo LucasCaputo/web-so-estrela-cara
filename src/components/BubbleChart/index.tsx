@@ -18,16 +18,19 @@ const BubbleChart: React.FC<BubbleChartProps> = (props) => {
   const bubbleRevenue = 250 * revenuePercent;
 
   const bubbleCost = 250 * costPercent;
+  let zindex = "";
 
   if (props.revenue < Math.abs(props.cost)) {
-    document.getElementById("revenue")?.classList.add("zindex");
+    zindex = "zindex";
+  } else {
+    zindex = "";
   }
 
   return (
     <Box id="BubbleChart" display="flex">
       <Box
         id="revenue"
-        className="bubble white revenue"
+        className={`bubble white revenue ${zindex}`}
         width={`${bubbleRevenue}px`}
         height={`${bubbleRevenue}px`}
       >
