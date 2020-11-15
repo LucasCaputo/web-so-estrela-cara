@@ -2,6 +2,7 @@ import React from "react";
 import "./styles.css";
 
 import { Box } from "@material-ui/core";
+import formatCurrency from "../../utils/formatCurrency";
 
 interface BubbleChartProps {
   revenue: number;
@@ -40,7 +41,7 @@ const BubbleChart: React.FC<BubbleChartProps> = (props) => {
           justifyContent="center"
           height="100%"
         >
-          R$ {props.revenue}
+          {formatCurrency(props.revenue)}
         </Box>
       </Box>
 
@@ -55,7 +56,7 @@ const BubbleChart: React.FC<BubbleChartProps> = (props) => {
           justifyContent="center"
           height="100%"
         >
-          R$ {props.cost}
+          {formatCurrency(props.cost)}
         </Box>
       </Box>
     </Box>

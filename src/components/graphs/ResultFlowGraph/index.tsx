@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 import { Container } from "./styles";
-import { Chart, CommonAxe } from "chart.js";
+import { Chart } from "chart.js";
 
 const ResultFlowGraph = () => {
   const data = {
@@ -9,8 +9,8 @@ const ResultFlowGraph = () => {
     datasets: [
       {
         label: "Saídas",
-        // backgroundColor: "#000",
-        borderColor: "blue",
+        backgroundColor: "transparent",
+        borderColor: "#3270cd",
         data: [-7000, -1675, -289, 0, 6000, 7875],
         type: "line",
       },
@@ -29,7 +29,24 @@ const ResultFlowGraph = () => {
     ],
   };
 
-  const options = {};
+  const options: Chart.ChartOptions = {
+    scales: {
+      xAxes: [
+        {
+          gridLines: {
+            display: false,
+          },
+        },
+      ],
+      yAxes: [
+        {
+          gridLines: {
+            display: true,
+          },
+        },
+      ],
+    },
+  };
 
   useEffect(() => {
     new Chart("myChart", {

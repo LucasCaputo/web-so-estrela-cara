@@ -4,6 +4,7 @@ import "./styles.css";
 import { Box, Paper } from "@material-ui/core";
 
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
+import formatCurrency from "../../utils/formatCurrency";
 
 interface CardProps {
   title: string;
@@ -28,10 +29,19 @@ const Card: React.FC<CardProps> = ({ handleRemove, ...props }) => {
             className="card-title"
             dangerouslySetInnerHTML={{ __html: props.title }}
           ></strong>
-          <p className="card-date">{props.date}</p>
+          <p
+            className="card-date"
+            style={{ color: "#000", opacity: "0.4", fontSize: "1.4rem" }}
+          >
+            {props.date}
+          </p>
         </Box>
         <Box width="28%" className="card-value">
-          {props.value} <span> {props.size === "medium" ? "R$" : ""}</span>
+          <span>
+            {props.size === "medium" || props.size === "small"
+              ? formatCurrency(props.value)
+              : props.value}
+          </span>
         </Box>
 
         {props.size !== "medium" && handleRemove && (

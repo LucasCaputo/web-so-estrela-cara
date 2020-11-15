@@ -63,7 +63,7 @@ function Dashboards() {
         toast.error(renderMessageError(error));
       }
     },
-    [month, year]
+    [month, year],
   );
 
   console.log(month, "/", year);
@@ -131,7 +131,7 @@ function Dashboards() {
               <BubbleChart
                 revenue={balance?.gross_revenue || 0}
                 cost={balance?.total_spend || 0}
-              ></BubbleChart>
+              />
             </div>
 
             <Box
@@ -146,19 +146,13 @@ function Dashboards() {
                 color="green"
                 value={balance?.gross_revenue || 0}
                 size="medium"
-              ></Card>
+              />
               <Card
                 title="Saídas"
                 color="red"
                 value={balance?.total_spend || 0}
                 size="medium"
-              ></Card>
-              {/* <Card
-                title="Gastos Futuros"
-                color="orange"
-                value={1250}
-                size="medium"
-              ></Card> */}
+              />
             </Box>
           </section>
 

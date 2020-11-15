@@ -22,7 +22,24 @@ const CashManagementGraph = () => {
     ],
   };
 
-  const options: Chart.ChartOptions = {};
+  const options: Chart.ChartOptions = {
+    scales: {
+      xAxes: [
+        {
+          gridLines: {
+            display: false,
+          },
+        },
+      ],
+      yAxes: [
+        {
+          gridLines: {
+            display: true,
+          },
+        },
+      ],
+    },
+  };
 
   useEffect(() => {
     new Chart("myChart", {
