@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import SimpleMenu from "../../components/SimpleMenu";
 
-import logoImg from "../../assets/images/startMoney.svg";
+import logoImg from "../../assets/images/startMoney-blue.svg";
 
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import { makeStyles } from "@material-ui/core/styles";
