@@ -1,7 +1,9 @@
 import React from "react";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
+import { ToastContainer } from "react-toastify";
 
+import "react-toastify/dist/ReactToastify.css";
 import "./assets/styles/global.css";
 import "./assets/styles/colors.css";
 import Routes from "./routes";
@@ -23,6 +25,7 @@ const theme = createMuiTheme({
 function App() {
   return (
     <ThemeProvider theme={theme}>
+      <ToastContainer />
       <AppProvider>
         <Routes />
       </AppProvider>

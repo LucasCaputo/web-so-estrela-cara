@@ -1,4 +1,5 @@
 import React, { useState, useCallback, createContext, useContext } from "react";
+import { toast } from "react-toastify";
 
 // import { Container } from './styles';
 
@@ -76,7 +77,7 @@ const AuthProvider: React.FC = ({ children }) => {
 
       setAuthData({ token: token_formatted, user });
     } catch (error) {
-      throw new Error(error.response.data.message);
+      toast.error("Não foi possível fazer login");
     }
   }, []);
 

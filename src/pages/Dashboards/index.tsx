@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import api from "../../services/api";
@@ -18,6 +18,8 @@ import HistoryIcon from "@material-ui/icons/History";
 
 import "./styles.css";
 import Select from "../../components/Select";
+import { toast } from "react-toastify";
+import renderMessageError from "../../utils/renderMessageError";
 
 interface ITransaction {
   id: number;
@@ -32,48 +34,41 @@ interface IBalance {
   reference_month: string;
   total_spend: number;
   transactions: ITransaction[];
+  transactions_gross_revenue: number;
+  transactions_total_spend: number;
 }
 
 function Dashboards() {
   const [balance, setBalance] = useState<IBalance>();
-  const [values, setValues] = useState({ receita: 0, gastos: 0 });
-  const [month, setMonth] = useState("");
 
-  useEffect(() => {
-    async function loadData() {
+  const [month, setMonth] = useState(String(new Date().getMonth() + 1));
+  const [year, setYear] = useState(String(new Date().getFullYear()));
+
+  const loadData = useCallback(
+    async function () {
       try {
-        const response = await api.get("/balances", {
+        const reference_month = `${month}/${year}`;
+
+        const response = await api.get("/balances/transactions", {
           params: {
-            reference_month: "11/2020",
+            reference_month,
+            limit_transactions: 5,
           },
         });
 
-        const balance_data = response.data[0] as IBalance;
+        const balance_data = response.data as IBalance;
 
-        // Remover esse array depois que arrumar o backend
         setBalance(balance_data);
-
-        // soma total de receita e gastos
-        const { gastos, receita } = balance_data.transactions.reduce(
-          (accumulator, transaction) => {
-            if (transaction.value < 0) {
-              accumulator["gastos"] += transaction.value;
-            } else {
-              accumulator["receita"] += transaction.value;
-            }
-            return accumulator;
-          },
-          { receita: 0, gastos: 0 }
-        );
-
-        setValues({ gastos, receita });
       } catch (error) {
-        console.log(error);
+        toast.error(renderMessageError(error));
       }
-    }
+    },
+    [month, year],
+  );
 
+  useEffect(() => {
     loadData();
-  }, []);
+  }, [loadData]);
 
   return (
     <div id="Dashboards">
@@ -90,8 +85,8 @@ function Dashboards() {
       >
         <Box width="90%" paddingBottom="3.2rem">
           <section className="basic-chart">
-            <Box>
-              <h2 className="dashboards-title">Visão Geral</h2>
+            <Box display="flex">
+              <h2>Visão geral</h2>
               <Select
                 name="month"
                 label=""
@@ -100,26 +95,39 @@ function Dashboards() {
                   setMonth(e.target.value);
                 }}
                 options={[
-                  { value: "1", label: "Janeiro" },
-                  { value: "2", label: "Fevereiro" },
-                  { value: "3", label: "Março" },
-                  { value: "4", label: "Abril" },
-                  { value: "5", label: "Maio" },
-                  { value: "6", label: "Junho" },
-                  { value: "7", label: "Julho" },
-                  { value: "8", label: "Agosto" },
-                  { value: "9", label: "Setembro" },
+                  { value: "01", label: "Janeiro" },
+                  { value: "02", label: "Fevereiro" },
+                  { value: "03", label: "Março" },
+                  { value: "04", label: "Abril" },
+                  { value: "05", label: "Maio" },
+                  { value: "06", label: "Junho" },
+                  { value: "07", label: "Julho" },
+                  { value: "08", label: "Agosto" },
+                  { value: "09", label: "Setembro" },
                   { value: "10", label: "Outubro" },
                   { value: "11", label: "Novembro" },
                   { value: "12", label: "Dezembro" },
+                ]}
+              />
+              <Select
+                name="year"
+                label=""
+                value={year}
+                onChange={(e) => {
+                  setYear(e.target.value);
+                }}
+                options={[
+                  { value: "2020", label: "2020" },
+                  { value: "2019", label: "2019" },
+                  { value: "2018", label: "2018" },
                 ]}
               />
             </Box>
 
             <div className="dashboards-chart-container">
               <BubbleChart
-                revenue={values.receita}
-                cost={values.gastos}
+                revenue={balance?.gross_revenue || 0}
+                cost={balance?.total_spend || 0}
               ></BubbleChart>
             </div>
 
@@ -133,13 +141,13 @@ function Dashboards() {
               <Card
                 title="Entradas"
                 color="green"
-                value={values.receita}
+                value={balance?.gross_revenue || 0}
                 size="medium"
               ></Card>
               <Card
                 title="Saídas"
                 color="red"
-                value={values.gastos}
+                value={balance?.total_spend || 0}
                 size="medium"
               ></Card>
               {/* <Card

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useCallback, useEffect, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 
 import Card from "../../components/Card";
 import BubbleChart from "../../components/BubbleChart";
@@ -25,67 +25,71 @@ interface IBalance {
   reference_month: string;
   total_spend: number;
   transactions: ITransaction[];
+  transactions_gross_revenue: number;
+  transactions_total_spend: number;
 }
 
 function Extract() {
   const history = useHistory();
 
   const [balance, setBalance] = useState<IBalance>();
-  const [values, setValues] = useState({ receita: 0, gastos: 0 });
   const [type, setType] = useState("");
   const [value, setValue] = useState("");
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
-  const [month, setMonth] = useState("");
 
-  useEffect(() => {
-    async function loadData() {
+  const [month, setMonth] = useState(String(new Date().getMonth() + 1));
+  const [year, setYear] = useState(String(new Date().getFullYear()));
+
+  const loadData = useCallback(
+    async function () {
       try {
-        const response = await api.get("/balances", {
+        const reference_month = `${month}/${year}`;
+
+        const response = await api.get("/balances/transactions", {
           params: {
-            reference_month: "11/2020",
+            reference_month,
           },
         });
 
-        const balance_data = response.data[0] as IBalance;
+        const balance_data = response.data as IBalance;
 
-        // Remover esse array depois que arrumar o backend
         setBalance(balance_data);
-
-        // soma total de receita e gastos
-        const { gastos, receita } = balance_data.transactions.reduce(
-          (accumulator, transaction) => {
-            if (transaction.value < 0) {
-              accumulator["gastos"] += transaction.value;
-            } else {
-              accumulator["receita"] += transaction.value;
-            }
-            return accumulator;
-          },
-          { receita: 0, gastos: 0 }
-        );
-
-        setValues({ gastos, receita });
+        setValue("");
+        setName("");
       } catch (error) {
         console.log(error);
       }
-    }
+    },
+    [month, year],
+  );
 
+  useEffect(() => {
     loadData();
-  }, []);
+  }, [loadData]);
 
   async function handleSubmit() {
+    const value_validated =
+      Number(value) > 0 && type === "cost" ? Number(value) * -1 : value;
+
+    const day_register_at = date.split("-")[2];
+
     try {
-      await api.post("/balances/1/transactions", {
+      await api.post(`/balances/${balance?.id}/transactions`, {
         name,
-        value,
-        day_register_at: 18,
+        value: value_validated,
+        day_register_at,
       });
+
+      loadData();
     } catch (err) {
       console.log(err);
-    } finally {
-      history.go(0);
     }
+  }
+
+  async function handleRemove(id: number) {
+    await api.delete(`/balances/${balance?.id}/transactions/${id}`);
+    loadData();
   }
 
   return (
@@ -103,120 +107,168 @@ function Extract() {
       >
         <Box width="90%" paddingBottom="3.2rem">
           <section className="basic-chart">
-            <Select
-              name="month"
-              label=""
-              value={month}
-              onChange={(e) => {
-                setMonth(e.target.value);
-              }}
-              options={[
-                { value: "1", label: "Janeiro" },
-                { value: "2", label: "Fevereiro" },
-                { value: "3", label: "Março" },
-                { value: "4", label: "Abril" },
-                { value: "5", label: "Maio" },
-                { value: "6", label: "Junho" },
-                { value: "7", label: "Julho" },
-                { value: "8", label: "Agosto" },
-                { value: "9", label: "Setembro" },
-                { value: "10", label: "Outubro" },
-                { value: "11", label: "Novembro" },
-                { value: "12", label: "Dezembro" },
-              ]}
-            />
+            <Box display="flex">
+              <Select
+                name="month"
+                label=""
+                value={month}
+                onChange={(e) => {
+                  setMonth(e.target.value);
+                }}
+                options={[
+                  { value: "01", label: "Janeiro" },
+                  { value: "02", label: "Fevereiro" },
+                  { value: "03", label: "Março" },
+                  { value: "04", label: "Abril" },
+                  { value: "05", label: "Maio" },
+                  { value: "06", label: "Junho" },
+                  { value: "07", label: "Julho" },
+                  { value: "08", label: "Agosto" },
+                  { value: "09", label: "Setembro" },
+                  { value: "10", label: "Outubro" },
+                  { value: "11", label: "Novembro" },
+                  { value: "12", label: "Dezembro" },
+                ]}
+              />
+              <Select
+                name="year"
+                label=""
+                value={year}
+                onChange={(e) => {
+                  setYear(e.target.value);
+                }}
+                options={[
+                  { value: "2020", label: "2020" },
+                  { value: "2019", label: "2019" },
+                  { value: "2018", label: "2018" },
+                ]}
+              />
+            </Box>
             <div className="dashboards-chart-container">
-              <BubbleChart
-                revenue={values.receita}
-                cost={values.gastos}
-              ></BubbleChart>
+              {!balance ? (
+                <></>
+              ) : (
+                // Link para página de Integration (Importação de planilha)
+                <>
+                  <Link className="button" to="/integracao">
+                    Importação de dados
+                  </Link>
+                  <BubbleChart
+                    revenue={balance.transactions_gross_revenue}
+                    cost={balance.transactions_total_spend}
+                  />
+                </>
+              )}
             </div>
           </section>
-
-          <section className="inputdata">
-            <h2 className="extract-title">Adicionar Lançamentos</h2>
-
-            <Input
-              name="name"
-              label=""
-              type="text"
-              placeholder="Digite um identificador"
-              value={name}
-              onChange={(event) => {
-                const { value } = event.target;
-
-                setName(value);
-              }}
-            />
-
-            <Box display="flex">
-              <Box width="40%">
-                <Select
-                  name="type"
-                  label=""
-                  value={type}
-                  onChange={(e) => {
-                    setType(e.target.value);
-                  }}
-                  options={[
-                    { value: "revenue", label: "Entrada", class: "--bg-green" },
-                    { value: "cost", label: "Saída", class: "--bg-red" },
-                  ]}
-                />
-              </Box>
-
-              <Input
-                name="value"
-                label=""
-                type="number"
-                placeholder="Valor"
-                value={value}
-                onChange={(event) => {
-                  const { value } = event.target;
-
-                  setValue(value);
-                }}
-              />
-            </Box>
-
-            <Box>
-              <Input
-                name="date"
-                label=""
-                type="date"
-                value={date}
-                onChange={(event) => {
-                  const { value } = event.target;
-
-                  setDate(value);
-                }}
-              />
-              <button className="button medium" onClick={handleSubmit}>
-                Cadastrar
+          {!balance ? (
+            <>
+              <h2>
+                Você precisa cadastrar um balanço nesse mês ou importar os dados{" "}
+              </h2>
+              <Link className="button" to="/integracao">
+                Importação de dados
+              </Link>
+              <button className="button">
+                Clique aqui cadastrar um balanço
               </button>
-            </Box>
-          </section>
+              {/* <button className="button">Clique aqui para importar</button> */}
+            </>
+          ) : (
+            <>
+              <section className="inputdata">
+                <h2 className="extract-title">Adicionar Lançamentos</h2>
 
-          <section className="dashboards-last-releases">
-            <h2 className="extract-title">Últimos Lançamentos</h2>
+                <Input
+                  name="name"
+                  label=""
+                  type="text"
+                  placeholder="Digite um identificador"
+                  value={name}
+                  onChange={(event) => {
+                    const { value } = event.target;
 
-            <Box
-              display="flex"
-              flexDirection="column-reverse"
-              width="100%"
-              gridGap="8px"
-            >
-              {balance?.transactions?.map((transaction) => (
-                <Card
-                  key={transaction.id}
-                  title={transaction.name}
-                  color={transaction.value > 0 ? "green" : "red"}
-                  value={transaction.value}
-                  size="small"
+                    setName(value);
+                  }}
                 />
-              ))}
-            </Box>
-          </section>
+
+                <Box display="flex">
+                  <Box width="40%">
+                    <Select
+                      name="type"
+                      label=""
+                      value={type}
+                      onChange={(e) => {
+                        setType(e.target.value);
+                      }}
+                      options={[
+                        {
+                          value: "revenue",
+                          label: "Entrada",
+                          class: "--bg-green",
+                        },
+                        { value: "cost", label: "Saída", class: "--bg-red" },
+                      ]}
+                    />
+                  </Box>
+
+                  <Input
+                    name="value"
+                    label=""
+                    type="number"
+                    placeholder="Valor"
+                    value={value}
+                    onChange={(event) => {
+                      const { value } = event.target;
+
+                      setValue(value);
+                    }}
+                  />
+                </Box>
+
+                <Box>
+                  <Input
+                    name="date"
+                    label=""
+                    type="date"
+                    value={date}
+                    onChange={(event) => {
+                      const { value } = event.target;
+
+                      setDate(value);
+                    }}
+                  />
+                  <button className="button medium" onClick={handleSubmit}>
+                    Cadastrar
+                  </button>
+                </Box>
+              </section>
+
+              <section className="dashboards-last-releases">
+                <h2 className="extract-title">Últimos Lançamentos</h2>
+
+                <Box
+                  display="flex"
+                  flexDirection="column"
+                  width="100%"
+                  gridGap="8px"
+                >
+                  {balance?.transactions?.map((transaction) => (
+                    <Card
+                      key={transaction.id}
+                      title={transaction.name}
+                      color={transaction.value > 0 ? "green" : "red"}
+                      value={transaction.value}
+                      size="small"
+                      handleRemove={() => {
+                        handleRemove(transaction.id);
+                      }}
+                    />
+                  ))}
+                </Box>
+              </section>
+            </>
+          )}
         </Box>
       </Box>
     </div>

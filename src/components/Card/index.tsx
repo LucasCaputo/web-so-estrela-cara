@@ -10,9 +10,10 @@ interface CardProps {
   value: number;
   color: string;
   size: string;
+  handleRemove?: Function;
 }
 
-const Card: React.FC<CardProps> = (props) => {
+const Card: React.FC<CardProps> = ({ handleRemove, ...props }) => {
   return (
     <Paper id="Card" className={props.size}>
       <Box display="flex" flexDirection="row" alignItems="center" height="100%">
@@ -34,9 +35,14 @@ const Card: React.FC<CardProps> = (props) => {
         </Box>
 
         {props.size !== "medium" && (
-          <p>
-            <DeleteForeverIcon className="icon"></DeleteForeverIcon>{" "}
-          </p>
+          <DeleteForeverIcon
+            className="icon"
+            onClick={() => {
+              if (handleRemove) {
+                handleRemove();
+              }
+            }}
+          />
         )}
       </Box>
     </Paper>
