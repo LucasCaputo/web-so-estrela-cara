@@ -254,6 +254,7 @@ function Extract() {
                       title={transaction.name}
                       color={transaction.value > 0 ? "green" : "red"}
                       value={transaction.value}
+                      date={`${month}/${year}`}
                       size="small"
                       handleRemove={() => {
                         handleRemove(transaction.id);

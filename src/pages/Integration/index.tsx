@@ -54,10 +54,22 @@ function Integration() {
       <div className="integration-container">
         <h1 className="integration-title">Integração</h1>
 
-        <label htmlFor="file">
-          <h2 className="integration-description">
-            Clique aqui para poder enviar seu arquivo de lançamentos
+        <label
+          htmlFor="file"
+          className={file?.name ? "--bg-green-dark" : "--bg-red"}
+        >
+          <h2
+            className={
+              file?.name
+                ? "--dark integration-description"
+                : "--light integration-description"
+            }
+          >
+            {file?.name
+              ? "Clique no botão para enviar"
+              : "Clique aqui para poder enviar seu arquivo de lançamento"}
           </h2>
+          <p className={file?.name ? "--dark" : "--light"}>{file?.name}</p>
         </label>
         <input
           type="file"

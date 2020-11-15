@@ -44,6 +44,10 @@
 .--green-dark {
   color: #4de988;
 }
+
+.--bg-green-dark {
+  background: #4de988;
+}
 /* 
 .--teal: #20c997;
 .--cyan: #17a2b8;
@@ -56,9 +60,17 @@
 .--info: #17a2b8;
 .--warning: #ffc107;
 .--danger: #dc3545;
-.--light: #f8f9fa;
-.--dark: #343a40;
-.--dark-dark: #090909;
+/*  */
+
+.--light {
+  color: #f8f9fa;
+}
+
+.--dark {
+  color: #343a40;
+}
+
+/* .--dark-dark: #090909;
 .--breakpoint-xs: 0;
 .--breakpoint-sm: 576px;
 .--breakpoint-md: 768px;

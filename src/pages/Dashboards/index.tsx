@@ -66,6 +66,8 @@ function Dashboards() {
     [month, year]
   );
 
+  console.log(month, "/", year);
+
   useEffect(() => {
     loadData();
   }, [loadData]);
@@ -161,7 +163,7 @@ function Dashboards() {
           </section>
 
           <section className="dashboards-container">
-            <Link to="/extrato" className="button">
+            <Link to="/extrato" className="button medium">
               Gerenciar Lançamentos
             </Link>
 
@@ -286,6 +288,7 @@ function Dashboards() {
                   title={transaction.name}
                   color={transaction.value > 0 ? "green" : "red"}
                   value={transaction.value}
+                  date={`${month}/${year}`}
                   size="small"
                 />
               ))}

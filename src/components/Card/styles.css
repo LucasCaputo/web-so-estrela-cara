@@ -34,6 +34,12 @@
   font-size: 1.6rem;
   color: var(--dark-dark);
 }
+#Card .card-date {
+  margin-left: 1.6rem;
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: var(--dark-dark);
+}
 
 #Card .card-value {
   color: var(--dark-dark);

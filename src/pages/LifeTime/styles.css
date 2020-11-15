@@ -3,6 +3,10 @@
   height: 100vh;
 }
 
+#LifeTime .table {
+  height: 250px;
+}
+
 #LifeTime .lifetime-title {
   color: var(--color-text-base);
   padding: 1.6rem;
@@ -10,9 +14,11 @@
 }
 
 #LifeTime .aside-info {
+  position: absolute;
+  box-shadow: 10px 10px 6px rgba(27, 27, 27, 0.5);
   display: flex;
   flex-direction: column;
-  width: 45%;
+  width: 35%;
   margin-right: 8px;
   border-right: 1px solid black;
 }
@@ -51,4 +57,9 @@
 
 #LifeTime .blue {
   background: #cbdfff !important;
+}
+
+#LifeTime .image {
+  width: 100%;
+  padding: 1.6rem;
 }

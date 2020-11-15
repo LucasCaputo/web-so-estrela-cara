@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import LinkerPageHeader from "../../components/LinkerPageHeader";
 import api from "../../services/api";
 import renderMessageError from "../../utils/renderMessageError";
+import image from "../../assets/images/icons/description-lifetime.svg";
 import "./styles.css";
 
 interface IBalance {
@@ -38,7 +39,7 @@ function LifeTime() {
       <LinkerPageHeader name="Senhor Barriga" to="/dashboards" type="return" />
       <h2 className="lifetime-title">Criar Cenários</h2>
 
-      <Box display="flex">
+      <Box display="flex" className="table">
         <div className="aside-info">
           <p className="header">Mês</p>
           <p className="blue">Saldo em caixa</p>
@@ -47,7 +48,14 @@ function LifeTime() {
           <p>Imposto</p>
           <p className="blue">Resultado</p>
         </div>
-        <div className="balances-table">
+        <div
+          className="balances-table"
+          style={{
+            display: "flex",
+            width: "100%",
+            overflowX: "auto",
+          }}
+        >
           {balances.map((balance) => (
             <div id="balance-card" key={balance.id}>
               <p className="header">{balance.reference_month}</p>
@@ -67,6 +75,8 @@ function LifeTime() {
           ))}
         </div>
       </Box>
+
+      <img src={image} alt="Tempo de Vida" className="image" />
     </div>
   );
 }
