@@ -22,19 +22,17 @@ const Card: React.FC<CardProps> = ({ handleRemove, ...props }) => {
           width={props.size === "medium" ? "8%" : "4%"}
           height="100%"
         ></Box>
-
         <Box width="64%">
           <strong
             className="card-title"
             dangerouslySetInnerHTML={{ __html: props.title }}
           ></strong>
         </Box>
-
         <Box width="28%" className="card-value">
           {props.value} <span> {props.size === "medium" ? "R$" : ""}</span>
         </Box>
 
-        {props.size !== "medium" && (
+        {props.size !== "medium" && handleRemove && (
           <DeleteForeverIcon
             className="icon"
             onClick={() => {

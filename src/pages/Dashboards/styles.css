@@ -7,6 +7,10 @@
   height: 40vh;
 }
 
+Dashboards .basic-chart #year {
+  margin-top: 0 !important;
+}
+
 #Dashboards .dashboards-title {
   color: var(--color-text-base);
   padding: 1.6rem;
@@ -41,7 +45,7 @@
 
 #Dashboards .primary-cards.purple {
   background: #ddadeb;
-  opacity: 0.5;
+  /* opacity: 0.5; */
 }
 #Dashboards .primary-cards.purple .description.purple {
   height: 10rem;
@@ -55,7 +59,7 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  opacity: 0.5;
+  /* opacity: 0.5; */
 }
 #Dashboards .primary-cards.blue .description.blue {
   height: 10rem;

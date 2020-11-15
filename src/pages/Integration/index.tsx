@@ -51,55 +51,63 @@ function Integration() {
         type="return"
       ></LinkerPageHeader>
 
-      <h1>Integração</h1>
+      <div className="integration-container">
+        <h1 className="integration-title">Integração</h1>
 
-      <label htmlFor="file">
-        <h2>Clique aqui para poder enviar seu arquivo de lançamentos</h2>
-      </label>
-      <input
-        type="file"
-        id="file"
-        onChange={(event) => {
-          const file_input = event.target.files;
+        <label htmlFor="file">
+          <h2 className="integration-description">
+            Clique aqui para poder enviar seu arquivo de lançamentos
+          </h2>
+        </label>
+        <input
+          type="file"
+          id="file"
+          onChange={(event) => {
+            const file_input = event.target.files;
 
-          if (file_input) {
-            setFile(file_input.item(0));
-          }
-        }}
-      />
+            if (file_input) {
+              setFile(file_input.item(0));
+            }
+          }}
+        />
 
-      <button onClick={handleSubmit}>Enviar</button>
+        <button className="button medium left" onClick={handleSubmit}>
+          Enviar
+        </button>
 
-      <footer>
-        <h2>Formato dos dados</h2>
+        <footer>
+          <h2 className="integration-description">
+            A planilha deve ter esse padrão
+          </h2>
 
-        <table>
-          <thead>
-            <tr>
-              <td>Nome/Descrição</td>
-              <td>Valor</td>
-              <td>Data</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Conta de água</td>
-              <td>-254.65</td>
-              <td>01/11/2020</td>
-            </tr>
-            <tr>
-              <td>Recebimento venda. Cod: 8758</td>
-              <td> 2054.65</td>
-              <td>02/11/2020</td>
-            </tr>
-            <tr>
-              <td>...</td>
-              <td>...</td>
-              <td>...</td>
-            </tr>
-          </tbody>
-        </table>
-      </footer>
+          <table>
+            <thead>
+              <tr>
+                <td>Nome/Descrição</td>
+                <td>Valor</td>
+                <td>Data</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Conta de água</td>
+                <td>-254.65</td>
+                <td>01/11/2020</td>
+              </tr>
+              <tr>
+                <td>Venda. Cod: 8758</td>
+                <td> 2054.65</td>
+                <td>02/11/2020</td>
+              </tr>
+              <tr>
+                <td>...</td>
+                <td>...</td>
+                <td>...</td>
+              </tr>
+            </tbody>
+          </table>
+        </footer>
+      </div>
     </div>
   );
 }

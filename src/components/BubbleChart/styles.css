@@ -17,6 +17,13 @@
   right: 13vh;
 }
 
+#BubbleChart .revenue.zindex {
+  z-index: 999;
+  min-height: 80px;
+  min-width: 80px;
+  right: 5vh;
+}
+
 #BubbleChart .cost {
   background: var(--red);
   right: 3.2rem;

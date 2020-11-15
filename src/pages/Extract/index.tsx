@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import Card from "../../components/Card";
 import BubbleChart from "../../components/BubbleChart";
@@ -30,7 +30,7 @@ interface IBalance {
 }
 
 function Extract() {
-  const history = useHistory();
+  // const history = useHistory();
 
   const [balance, setBalance] = useState<IBalance>();
   const [type, setType] = useState("");
@@ -61,7 +61,7 @@ function Extract() {
         console.log(error);
       }
     },
-    [month, year],
+    [month, year]
   );
 
   useEffect(() => {
@@ -107,7 +107,7 @@ function Extract() {
       >
         <Box width="90%" paddingBottom="3.2rem">
           <section className="basic-chart">
-            <Box display="flex">
+            <Box display="flex" justifyContent="space-around">
               <Select
                 name="month"
                 label=""
@@ -148,9 +148,8 @@ function Extract() {
               {!balance ? (
                 <></>
               ) : (
-                // Link para página de Integration (Importação de planilha)
                 <>
-                  <Link className="button" to="/integracao">
+                  <Link className="button medium left" to="/integracao">
                     Importação de dados
                   </Link>
                   <BubbleChart
@@ -163,16 +162,12 @@ function Extract() {
           </section>
           {!balance ? (
             <>
-              <h2>
-                Você precisa cadastrar um balanço nesse mês ou importar os dados{" "}
+              <h2 className="extract-title">
+                Você precisa importar sua movimentações desse mes{" "}
               </h2>
               <Link className="button" to="/integracao">
-                Importação de dados
+                Importe seus dados
               </Link>
-              <button className="button">
-                Clique aqui cadastrar um balanço
-              </button>
-              {/* <button className="button">Clique aqui para importar</button> */}
             </>
           ) : (
             <>

@@ -1,3 +1,4 @@
+import { Box } from "@material-ui/core";
 import React, { useCallback, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
@@ -34,55 +35,38 @@ function LifeTime() {
   }, [loadData]);
   return (
     <div id="LifeTime">
-      <LinkerPageHeader
-        name="Senhor Barriga"
-        to="/dashboards"
-        type="return"
-      ></LinkerPageHeader>
-      <h1>Criar Cenários</h1>
+      <LinkerPageHeader name="Senhor Barriga" to="/dashboards" type="return" />
+      <h2 className="lifetime-title">Criar Cenários</h2>
 
-      <div id="corpo" style={{ display: "flex" }}>
-        <div id="aside-info" style={{ background: "#eee", width: 150 }}>
-          <p>Mês</p>
-          <p>Saldo em caixa</p>
+      <Box display="flex">
+        <div className="aside-info">
+          <p className="header">Mês</p>
+          <p className="blue">Saldo em caixa</p>
           <p>Receita Bruta</p>
           <p>Gastos</p>
           <p>Imposto</p>
-          <p>Resultado</p>
+          <p className="blue">Resultado</p>
         </div>
-        <div
-          id="balances-table"
-          style={{
-            display: "flex",
-            width: "100%",
-            overflowX: "auto",
-          }}
-        >
+        <div className="balances-table">
           {balances.map((balance) => (
-            <div
-              id="balance-card"
-              key={balance.id}
-              style={{ borderLeft: "1px  solid #000" }}
-            >
-              <p>{balance.reference_month}</p>
-              <p>Saldo em caixa</p>
+            <div id="balance-card" key={balance.id}>
+              <p className="header">{balance.reference_month}</p>
+              <p className="blue">Saldo em caixa</p>
               <p>{balance.gross_revenue}</p>
-              <p>
-                <input type="text" defaultValue={balance.total_spend} />
-              </p>
+              <p>{balance.total_spend}</p>
               <p>
                 {balance.gross_revenue *
                   Number((1 - balance.percentage_of_taxes).toFixed(4))}
                 ({Number((1 - balance.percentage_of_taxes).toFixed(4)) * 100}%)
               </p>
-              <p>
+              <p className="blue">
                 {balance.percentage_of_taxes * balance.gross_revenue -
                   balance.total_spend}
               </p>
             </div>
           ))}
         </div>
-      </div>
+      </Box>
     </div>
   );
 }

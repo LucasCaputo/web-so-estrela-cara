@@ -63,7 +63,7 @@ function Dashboards() {
         toast.error(renderMessageError(error));
       }
     },
-    [month, year],
+    [month, year]
   );
 
   useEffect(() => {
@@ -85,8 +85,8 @@ function Dashboards() {
       >
         <Box width="90%" paddingBottom="3.2rem">
           <section className="basic-chart">
-            <Box display="flex">
-              <h2>Visão geral</h2>
+            <h2 className="dashboards-title">Visão geral</h2>
+            <Box display="flex" justifyContent="space-around">
               <Select
                 name="month"
                 label=""
@@ -111,6 +111,7 @@ function Dashboards() {
               />
               <Select
                 name="year"
+                className="year"
                 label=""
                 value={year}
                 onChange={(e) => {
@@ -221,7 +222,7 @@ function Dashboards() {
                 </Link>
               </Grid>
               <Grid item xs={6}>
-                <Link to={"/import"}>
+                <Link to={"/integracao"}>
                   <Paper className="secondary-cards import">
                     <Box
                       display="flex"
